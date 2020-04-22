@@ -1,0 +1,540 @@
+$bo-font: "Assistant";
+$bo-font-awesome: "Font Awesome 5 Free";
+$bo-white-color: #ffffff;
+$bo-black-color: #000000;
+$bo-hover-color: #259dab;
+
+
+$bo-header-bg-color: #262b36;
+$bo-logo-bgcolor: #CBD2D5;
+$bo-border-list: #a0a8b9;
+$bo-link-color: #333333;
+$bo-bg-profil-color: #3b4354;
+$bo-tab-title-color: #9fa8bc;
+$bo-nav-title-color: #505b72;
+
+body {
+    font: $bo-font;
+}
+
+div.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+img.mout-login-portrait {
+  width: 20px;
+  height: 20px;
+}
+
+span.mout-log-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+//Header
+header {
+  & div.mout-header-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $bo-header-bg-color;
+
+    & div.mout-logo-panel {
+      width: 220px;
+      position: absolute;
+      left: 0;
+      height: 64px;
+      padding: 18px 15px;
+      background-color: $bo-logo-bgcolor;
+
+      & H2 {
+        margin: 0;
+          text-align: center;
+          font-family: $bo-font;
+          text-transform: uppercase;
+      }
+    }
+
+    & div.mout-header-bar {
+      margin-left: 220px;
+      position: relative;
+      height: 64px;
+
+      & div.header-bar-right {
+        float: right;
+        padding-right: 20px;
+
+        & ul.header-bar-right-menu {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          & li.header-bar-right-menu-list {
+            display: inline-block;
+            float: left;
+            position: relative;
+
+            & div.btn-group {
+              margin-bottom: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              & a {
+                padding: 10px;
+                color: $bo-white-color;
+
+                &:hover {
+                  color: $bo-hover-color;
+                }
+              }
+
+              & button.btn {
+                border-radius: 0;
+                background-color: transparent;
+                color: #778395;
+                height: 64px;
+                border: 0;
+                padding-left: 5px;
+                padding-right: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & ul.drop-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 0;
+    list-style: none;
+    font-size: 12px;
+    text-align: left;
+    background-color: $bo-white-color;
+    border: 1px solid #cccccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+    display: none;
+
+    &.pull-right {
+      right: 0;
+      left: auto;
+
+      & li {
+          color: $bo-black-color;
+        & a {
+          display: block;
+          padding: 3px 20px;
+          clear: both;
+          font-weight: normal;
+          line-height: 1.42;
+          color: $bo-link-color !important;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    &.pull-right.open {
+      display: block;
+
+      &:after {
+        border-bottom: 8px solid #fff;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        content: "";
+        display: inline-block;
+        right: 17px;
+        position: absolute;
+        top: -7px;
+      }
+    }
+  }
+}
+
+//Header END
+
+//Section
+
+div.mout-left-panel {
+  background-color: $bo-white-color;
+  width: 220px;
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0px;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  & div.mout-left-panel-informations {
+
+    & div.mout-left-panel-profil {
+      padding: 15px;
+      background-color: $bo-bg-profil-color;
+
+      & div.mout-profil-left {
+        display: table-cell;
+        vertical-align: top;
+        padding-right: 15px;
+
+        & img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+      & div.mout-profil-right {
+        display: table-cell;
+        vertical-align: top;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
+        line-height: 1.4;
+
+        & H4 {
+          margin: 7px 0 2px;
+          color: rgba(255, 255, 255, 0.9);
+          font-weight: 500;
+          letter-spacing: 1px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    //Tab content top
+
+    & ul.nav-tabs.nav-justified.nav-sidebar {
+        margin-top: 0;
+      background-color: #657390;
+      margin-bottom: 20px;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      width: 100%;
+      border-bottom: 0;
+      padding-left: 0;
+      list-style: none;
+
+      & > li.mout-pan-top {
+        position: relative;
+        display: table-cell;
+        width: 1%;
+        float: none;
+        text-align: center;
+
+        & > a {
+          border-radius: 0;
+          background-color: #505b72;
+          color: #fff;
+          padding: 8px 10px;
+          font-size: 14px;
+          vertical-align: bottom;
+          color: rgba(255, 255, 255, 0.8);
+          text-transform: uppercase;
+          letter-spacing: .2px;
+          font-family: $bo-font;
+          font-weight: 700;
+          font-size: 12px;
+          margin: 0;
+          border: 0;
+          -webkit-transition: all 0.2s ease-out 0s;
+          -o-transition: all 0.2s ease-out 0s;
+          transition: all 0.2s ease-out 0s;
+          line-height: 1.42857143;
+          display: block;
+        }
+
+        &.active > a{
+          background-color: #fff;
+          color: #262b36;
+        }
+
+        & + li > a {
+          margin-left: 1px;
+        }
+      }
+    }
+
+    & div.mout-tab-content {
+
+      & div.mout-tab-pane {
+        padding: 0;
+        background-color: transparent;
+        display: none;
+
+        & h5.mout-tab-title {
+          text-transform: uppercase;
+          font-size: 11px;
+          color: $bo-tab-title-color;
+          line-height: normal;
+          padding: 0 15px;
+          font-weight: 500;
+          letter-spacing: .5px;
+        }
+
+        &.active {
+          display: block;
+        }
+      }
+
+      & nav {
+        padding-left: 0;
+        list-style: none;
+      }
+
+      & ul.nav-quirk {
+          padding-left: 0;
+        margin: 0 0 30px;
+        background-color: $bo-white-color;
+
+        & > li {
+          border-top: 1px solid #eaecf0;
+          text-transform: uppercase;
+          float: none;
+          font-weight: 500;
+          position: relative;
+          display: block;
+          width: 100%;
+
+          & > a {
+            position: relative;
+            display: block;
+            color: $bo-nav-title-color;
+            padding: 12px 14px;
+            border-radius: 0;
+            font-weight: 700;
+            -webkit-transition: all 0.2s ease-out 0s;
+            -o-transition: all 0.2s ease-out 0s;
+            transition: all 0.2s ease-out 0s;
+
+            & > i {
+              width: 16px;
+              font-size: 14px;
+              text-align: center;
+              margin-right: 7px;
+              color: #259dab;
+              vertical-align: top;
+              margin-top: 1.5555px;
+            }
+          }
+        }
+
+        .nav-parent {
+          & > a:after {
+            content: '\f078';
+            font-family: $bo-font-awesome;
+            font-size: 16px;
+            font-weight: 900;
+            color: #bdc3d1;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+          }
+          & ul.nav-children {
+            list-style: none;
+            display: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            border-top: 1px solid #eaecf0;
+            background-color: #f6f7f8;
+
+            & > li {
+              margin-left: 21px;
+              border-left: 1px solid #dbdfe6;
+              font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+              text-transform: none;
+              letter-spacing: normal;
+              display: block;
+              font-size: 12px;
+
+              & > a {
+                display: block;
+                font-weight: 400;
+                padding: 5px 0 5px 18px;
+                color: #657390;
+                position: relative;
+                height: 28px;
+                -webkit-transition: all 0.2s ease-out 0s;
+                -o-transition: all 0.2s ease-out 0s;
+                transition: all 0.2s ease-out 0s;
+
+                &:before {
+                  content: '';
+                  position: absolute;
+                  width: 5px;
+                  height: 5px;
+                  left: -3px;
+                  top: 50%;
+                  background-color: #9fa8bc;
+                  margin-top: -3px;
+                  border-radius: 50px;
+                  -webkit-transition: all 0.2s ease-out 0s;
+                  -o-transition: all 0.2s ease-out 0s;
+                  transition: all 0.2s ease-out 0s;
+                }
+
+                &:after {
+                  content: '';
+                  width: 30px;
+                  height: 30px;
+                  border: 1px solid $bo-border-list;
+                  position: absolute;
+                  left: -15px;
+                  top: 50%;
+                  margin-top: -15px;
+                  border-radius: 50px;
+                  opacity: 0;
+                  -webkit-transition: all 0.2s ease-out 0s;
+                  -o-transition: all 0.2s ease-out 0s;
+                  transition: all 0.2s ease-out 0s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+div.mout-main-panel {
+  padding-top: 64px;
+  margin-left: 220px;
+}
+
+div.mout-content-panel {
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 64px);
+
+  & h2 {
+    width: 80%;
+    position: relative;
+    font-family: $bo-font;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  & div.mout-create-navigation-container {
+    top: 2%;
+    right: 10%;
+    position: absolute;
+  }
+
+  & div.mout-create-navigation-content,
+      div.mout-edit-navigation-content {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: calc(100vh - 64px);
+    right: -100%;
+    transition: all .5s ease-in-out;
+    z-index: 1000;
+
+    &.showNav {
+      right: 0;
+    }
+
+    & div:nth-of-type(1) {
+      background: rgba(255,255,255, .95);
+    }
+
+    & div.mout-create-element-form-container {
+      padding: 20px;
+      box-shadow: -2px -1px 6px 2px rgba(112, 112, 112, 0.15);
+      background-color: $bo-white-color;
+    }
+  }
+
+  & ul.drag-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 60%;
+
+    & li.drag-nav-list {
+      width: 400px;
+      line-height: 2.5em;
+      cursor: pointer;
+      background: #fafafa;
+      margin: 1em 0;
+      border: 1px solid #c9c9c9;
+      padding-left: 10px;
+
+      &.nav-depth {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+//Gestion des tables
+table.mout-bo-table {
+  width: 100%;
+
+  & thead {
+    box-shadow: 1px 2px 4px 3px rgba(112, 112, 112, 0.15);
+    line-height: 3em;
+  }
+
+  & tbody > tr {
+    background-color: transparent !important;
+  }
+
+  & td:nth-of-type(1) {
+    padding: 0;
+    line-height: 1em;
+  }
+
+  & td:nth-of-type(2) {
+    text-align: left;
+  }
+
+  & td {
+    padding: 5px;
+    text-align: center;
+  }
+
+  & th:nth-of-type(2) {
+    text-align: left;
+  }
+
+  & th {
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.ui-test {
+  width: 400px;
+  line-height: 2.5em;
+  height: 2.5em;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px dashed #000000;
+  padding-left: 10px;
+}
+//Section END
