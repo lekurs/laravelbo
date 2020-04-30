@@ -34,7 +34,8 @@
                         <td>{{$client->address}}</td>
                         <td>{{$client->zip}}</td>
                         <td>{{$client->city}}</td>
-                        <td data-slug="{{$client->slug}}"><i class="fas fa-edit"></i></td>
+                        <td data-slug="{{$client->slug}}"><a href="{{route('showOne', $client->slug)}}"><i class="fas fa-edit edit-ico"></i></a></td>
+                        <td data-slug="{{$client->slug}}"><a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a></td>
                     </tr>
                 @endforeach
             @else
@@ -46,5 +47,17 @@
         </table>
 
         @include('bo.forms._add_client')
+        @include('bo.forms._edit_client')
     </div>
 @endsection
+
+@section('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.edit-ico').click(function (e) {
+                e.preventDefault();
+                $('.mout-edit-navigation-content').addClass('showNav');
+            })
+        })
+    </script>
