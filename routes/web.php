@@ -31,8 +31,14 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
     Route::any('/clients', 'Admin\Clients\ClientsController@showAll')->name('showClients');
+<<<<<<< HEAD
     Route::any('/clients/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
 //    Route::get('/clients/add', 'Admin\Clients\ClientsController@add')->name('addClient');
+=======
+    Route::post('/clients/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
+    Route::get('/clients/show/{slug}', 'Admin\Clients\ClientsController@showOne')->name('showOne');
+    Route::post('/clients/edit/{slug}', 'Admin\Clients\ClientsController@editBySlug')->name('updateClient');
+>>>>>>> b0e8e4965858cb3eeb6238b50634e9880f8e144c
 });
 
 //Exemple avec un controller

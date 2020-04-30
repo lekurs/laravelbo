@@ -6,16 +6,16 @@
         script: '',
     }
 
-    $.fn.updateJob = function (oo) {
+    $.fn.updateClient = function (oo) {
         if (oo) {
             $.extend(o, oo); //merge les options
         }
     }
 
     $(edit).click(function () {
-        let job = $(this).parent().attr('data-slug');
+        let client = $(this).parent().attr('data-slug');
 
-        $.post( o.script, {slug: job}, function(data){
+        $.post( o.script, {slug: client}, function(data){
             let elt = $('.mout-edit-navigation-content');
             const cancel = ('.btn-cancel')
 
