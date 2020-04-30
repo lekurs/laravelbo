@@ -13,6 +13,7 @@ class Client extends Model
        'zip',
        'city',
        'siren',
+        'slug'
     ];
 
     /**

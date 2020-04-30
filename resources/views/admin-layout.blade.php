@@ -114,6 +114,7 @@
 
     <div class="mout-main-panel">
         <div class="mout-content-panel">
+            @include('bo.flash.flash-message')
             @yield('body')
 
         </div>
