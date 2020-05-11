@@ -30,15 +30,20 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 //Administration
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
-    Route::any('/clients', 'Admin\Clients\ClientsController@showAll')->name('showClients');
-<<<<<<< HEAD
-    Route::any('/clients/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
-//    Route::get('/clients/add', 'Admin\Clients\ClientsController@add')->name('addClient');
-=======
-    Route::post('/clients/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
-    Route::get('/clients/show/{slug}', 'Admin\Clients\ClientsController@showOne')->name('showOne');
-    Route::post('/clients/edit/{slug}', 'Admin\Clients\ClientsController@editBySlug')->name('updateClient');
->>>>>>> b0e8e4965858cb3eeb6238b50634e9880f8e144c
+
+    Route::prefix('clients')->group(function () {
+        Route::get('/', 'Admin\Clients\ClientsController@showAll')->name('showClients');
+        Route::get('/add', 'Admin\Clients\ClientCreationController@clientCreation')->name('addClient');
+        Route::post('/add', 'Admin\Clients\ClientCreationController@addClient')->name('addClient');
+        Route::get('/show/{slug}', 'Admin\Clients\ClientUpdateController@getOneClient')->name('showOne');
+        Route::post('/clients/edit/{slug}', 'Admin\Clients\ClientsController@editBySlug')->name('updateClient');
+        Route::post('/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
+
+        Route::prefix('contact')->group(function () {
+            Route::get('/show', 'Admin\Contacts\ContactController@showOne')->name('showContact');
+            Route::post('/edit', 'Admin\Contacts\ContactEditController@EditBySlug')->name('editContact');
+        });
+    });
 });
 
 //Exemple avec un controller

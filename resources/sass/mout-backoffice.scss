@@ -15,6 +15,7 @@ $bo-nav-title-color: #505b72;
 
 body {
     font: $bo-font;
+    background: $bo-white-color;
 }
 
 div.btn-group {
@@ -528,13 +529,39 @@ table.mout-bo-table {
   }
 }
 
-.ui-test {
-  width: 400px;
-  line-height: 2.5em;
-  height: 2.5em;
-  cursor: pointer;
-  background: #ffffff;
-  border: 1px dashed #000000;
-  padding-left: 10px;
+//Edit page
+div.mout-admin-double-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    & div.left-container {
+        //float: left;
+        //width: 50%;
+    }
+
+    & div.right-container {
+        & div.right-content {
+            padding: 25px 20px;
+        }
+    }
 }
+
+h2.mout-bo-title-3-edit-page {
+    font-size: 18px;
+    font-family: $bo-font;
+}
+
+// !!Edit page!!
+
+//.ui-test {
+//  width: 400px;
+//  line-height: 2.5em;
+//  height: 2.5em;
+//  cursor: pointer;
+//  background: #ffffff;
+//  border: 1px dashed #000000;
+//  padding-left: 10px;
+//}
+//
+
 //Section END

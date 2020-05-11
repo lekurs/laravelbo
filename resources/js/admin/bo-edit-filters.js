@@ -1,5 +1,5 @@
 (function ($) {
-    const edit = $('.mout-bo-edit-icon');
+    const edit = $('.mout-contact-informations');
 
     let o = {
         auto: true,
@@ -13,7 +13,8 @@
     }
 
     $(edit).click(function () {
-        let job = $(this).parent().attr('data-slug');
+        let job = $(this).attr('data-slug');
+        console.log($(this))
 
         $.post( o.script, {slug: job}, function(data){
             let elt = $('.mout-edit-navigation-content');

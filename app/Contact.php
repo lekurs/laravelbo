@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Contact extends Model
 {
@@ -10,11 +11,12 @@ class Contact extends Model
         'name',
         'lastname',
         'email',
-        'phone'
+        'phone',
+        'slug'
     ];
 
-    public function client()
+    public function client(): BelongsTo
     {
-        return $this->belongsTo('App\Client');
+        return $this->belongsTo('App\Client', 'client_id');
     }
 }

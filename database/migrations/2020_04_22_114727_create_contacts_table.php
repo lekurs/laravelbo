@@ -20,7 +20,12 @@ class CreateContactsTable extends Migration
             $table->string('lastname', 150);
             $table->string('email', 255)->unique();
             $table->integer('phone');
+            $table->string('slug', 255)->unique();
+            $table->integer('client_id')->unsigned();
             $table->timestamps();
+            $table->foreign('client_id')->references('id')->on('clients')
+
+                ->onDelete('cascade');
         });
 
         DB::statement('ALTER TABLE contacts CHANGE phone phone INT(10) ZEROFILL NOT NULL ');

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Client extends Model
 {
@@ -20,8 +21,8 @@ class Client extends Model
      * O2M Contacts
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function contacts()
+    public function contacts(): HasMany
     {
-        return $this->hasMany('App\Contact');
+        return $this->hasMany('App\Contact', 'client_id');
     }
 }
