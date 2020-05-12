@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin\Clients;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ClientCreation;
-use App\Http\Requests\ContactCreation;
+use App\Http\Requests\Clients\ClientCreation;
+use App\Http\Requests\Contacts\ContactCreation;
 use App\Repository\ClientRepository;
 use Illuminate\Http\Request;
 

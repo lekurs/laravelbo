@@ -6,7 +6,7 @@
         script: '',
     }
 
-    $.fn.updateJob = function (oo) {
+    $.fn.updateContact = function (oo) {
         if (oo) {
             $.extend(o, oo); //merge les options
         }
@@ -14,17 +14,16 @@
 
     $(edit).click(function () {
         let job = $(this).attr('data-slug');
-        console.log($(this))
 
         $.post( o.script, {slug: job}, function(data){
-            let elt = $('.mout-edit-navigation-content');
-            const cancel = ('.btn-cancel')
+            let elt = $('.mout-content-panel');
 
-            elt.html(data);
-            elt.addClass('showNav');
+            elt.append(data);
 
-            $(cancel).click(function () {
-                elt.removeClass('showNav');
+            let cancel = $('.btn-cancel-edit');
+
+            $('body').on('click', cancel, function () {
+                elt.find('.mout-create-navigation-content').removeClass('showNav');
             })
 
         });

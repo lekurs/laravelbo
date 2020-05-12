@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Clients;
+
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientCreation extends FormRequest
+class ClientEdit extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +30,7 @@ class ClientCreation extends FormRequest
             'client-address' => 'nullable|max:255',
             'client-zip' => 'nullable|max:5',
             'client-city' => 'nullable|max:255',
-            'client-phone' => 'nullable|max:10',
+            'client-phone' => 'nullable|max:10'
         ];
     }
 }

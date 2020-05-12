@@ -1865,9 +1865,9 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/admin/bo-edit-filters.js":
+/***/ "./resources/js/admin/bo-edit-contact.js":
 /*!***********************************************!*\
-  !*** ./resources/js/admin/bo-edit-filters.js ***!
+  !*** ./resources/js/admin/bo-edit-contact.js ***!
   \***********************************************/
 /*! unknown exports (runtime-defined) */
 /*! exports [maybe provided (runtime-defined)] [maybe used (runtime-defined)] */
@@ -1881,7 +1881,7 @@ module.exports = {
     script: ''
   };
 
-  $.fn.updateJob = function (oo) {
+  $.fn.updateContact = function (oo) {
     if (oo) {
       $.extend(o, oo); //merge les options
     }
@@ -1889,16 +1889,14 @@ module.exports = {
 
   $(edit).click(function () {
     var job = $(this).attr('data-slug');
-    console.log($(this));
     $.post(o.script, {
       slug: job
     }, function (data) {
-      var elt = $('.mout-edit-navigation-content');
-      var cancel = '.btn-cancel';
-      elt.html(data);
-      elt.addClass('showNav');
-      $(cancel).click(function () {
-        elt.removeClass('showNav');
+      var elt = $('.mout-content-panel');
+      elt.append(data);
+      var cancel = $('.btn-cancel-edit');
+      $('body').on('click', cancel, function () {
+        elt.find('.mout-create-navigation-content').removeClass('showNav');
       });
     });
   });
@@ -38032,7 +38030,33 @@ Popper.Defaults = Defaults;
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	(() => {
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__webpack_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 			var ns = Object.create(null);
+/******/ 			__webpack_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			if(mode & 2 && typeof value == 'object' && value) {
+/******/ 				for(const key in value) def[key] = () => value[key];
+/******/ 			}
+/******/ 			def['default'] = () => value;
+/******/ 			__webpack_require__.d(ns, def);
+/******/ 			return ns;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -38042,6 +38066,28 @@ Popper.Defaults = Defaults;
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -38082,6 +38128,132 @@ Popper.Defaults = Defaults;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "/";
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// Promise = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/js/app": 0
+/******/ 		};
+/******/ 		
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => {
+/******/ 								installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 							});
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							var loadingEnded = () => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) return installedChunkData[1];
+/******/ 								}
+/******/ 							};
+/******/ 							var script = document.createElement('script');
+/******/ 							var onScriptComplete;
+/******/ 		
+/******/ 							script.charset = 'utf-8';
+/******/ 							script.timeout = 120;
+/******/ 							if (__webpack_require__.nc) {
+/******/ 								script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 							}
+/******/ 							script.src = url;
+/******/ 		
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							onScriptComplete = (event) => {
+/******/ 								onScriptComplete = () => {
+/******/ 		
+/******/ 								}
+/******/ 								// avoid mem leaks in IE.
+/******/ 								script.onerror = script.onload = null;
+/******/ 								clearTimeout(timeout);
+/******/ 								var reportError = loadingEnded();
+/******/ 								if(reportError) {
+/******/ 									var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 									var realSrc = event && event.target && event.target.src;
+/******/ 									error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 									error.name = 'ChunkLoadError';
+/******/ 									error.type = errorType;
+/******/ 									error.request = realSrc;
+/******/ 									reportError(error);
+/******/ 								}
+/******/ 							}
+/******/ 							;
+/******/ 							var timeout = setTimeout(() => {
+/******/ 								onScriptComplete({ type: 'timeout', target: script })
+/******/ 							}, 120000);
+/******/ 							script.onerror = script.onload = onScriptComplete;
+/******/ 							document.head.appendChild(script);
+/******/ 						} else installedChunks[chunkId] = 0;
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no deferred startup
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		function webpackJsonpCallback(data) {
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 		
+/******/ 			var runtime = data[3];
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0, resolves = [];
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					resolves.push(installedChunks[chunkId][0]);
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			for(moduleId in moreModules) {
+/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 				}
+/******/ 			}
+/******/ 			if(runtime) runtime(__webpack_require__);
+/******/ 			if(parentJsonpFunction) parentJsonpFunction(data);
+/******/ 			while(resolves.length) {
+/******/ 				resolves.shift()();
+/******/ 			}
+/******/ 		
+/******/ 		};
+/******/ 		
+/******/ 		var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 		var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 		jsonpArray.push = webpackJsonpCallback;
+/******/ 		var parentJsonpFunction = oldJsonpFunction;
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 (() => {
 /*!*****************************!*\
@@ -38089,18 +38261,16 @@ Popper.Defaults = Defaults;
   \*****************************/
 /*! unknown exports (runtime-defined) */
 /*! exports [maybe provided (runtime-defined)] [unused] */
-/*! runtime requirements: __webpack_require__ */
+/*! runtime requirements: __webpack_require__, __webpack_require__.e, __webpack_require__.t, __webpack_require__.* */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./admin/bo-mout-nav-bar */ "./resources/js/admin/bo-mout-nav-bar.js");
 
 __webpack_require__(/*! ./admin/navigation-manager */ "./resources/js/admin/navigation-manager.js");
 
-__webpack_require__(/*! ./admin/bo-edit-filters */ "./resources/js/admin/bo-edit-filters.js");
+__webpack_require__(/*! ./admin/bo-edit-contact */ "./resources/js/admin/bo-edit-contact.js");
 
-$('.mout-contact-informations').updateJob({
-  script: '/admin/clients/contact/edit'
-});
+__webpack_require__.e(/*! import() | bocontact */ "bocontact").then(__webpack_require__.t.bind(__webpack_require__, /*! ./admin/call-bo-edit-contact */ "./resources/js/admin/call-bo-edit-contact.js", 7));
 })();
 
 (() => {

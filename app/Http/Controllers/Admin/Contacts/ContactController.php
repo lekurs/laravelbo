@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admin\Contacts;
 
 
 use App\Http\Controllers\Controller;
+use App\Repository\ContactRepository;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function showOne(string $slug)
+    public function showOne(Request $request, ContactRepository $repository)
     {
-        $conctact = 'contact';
+        $contact = $repository->getOneBySlug($request->get('slug'));
 
         return view('bo.forms._edit_contact', [
-            'contact' => $conctact
+            'contact' => $contact
         ]);
     }
 }

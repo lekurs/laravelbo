@@ -1,9 +1,6 @@
 require('./bootstrap');
 require('./admin/bo-mout-nav-bar')
 require('./admin/navigation-manager')
-require('./admin/bo-edit-filters');
+require('./admin/bo-edit-contact');
 
-
-$('.mout-contact-informations').updateJob({
-    script: '/admin/clients/contact/edit'
-})
+import(/* webpackChunkName: "bocontact" */'./admin/call-bo-edit-contact');

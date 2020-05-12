@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+
+namespace App\Http\Requests\Contacts;
+
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactCreation extends FormRequest
+class ContactEdit extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,8 +19,6 @@ class ContactCreation extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
      * @return array
      */
     public function rules()

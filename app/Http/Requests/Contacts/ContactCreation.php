@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
-
+namespace App\Http\Requests\Contacts;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientEdit extends FormRequest
+class ContactCreation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +24,10 @@ class ClientEdit extends FormRequest
     public function rules()
     {
         return [
-            'client-name' => 'required|max:255',
-            'client-siren' => 'nullable|max:255',
-            'client-address' => 'nullable|max:255',
-            'client-zip' => 'nullable|max:5',
-            'client-city' => 'nullable|max:255',
-            'client-phone' => 'nullable|max:10'
+            'contact-name' => 'required|max:255',
+            'contact-lastname' => 'required|max:255',
+            'contact-phone' => 'max:10',
+            'contact-email' => 'required|max:255',
         ];
     }
 }

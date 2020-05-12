@@ -35,20 +35,25 @@ class ClientRepository
 
     public function getOneBySlug(string $slug)
     {
-        return Client::where('slug', '=', $slug)->with('contacts')->first();
+        return Client::whereSlug($slug)->with('contacts')->first();
     }
 
     public function editBySlug(array $clientData, string $slug)
     {
-        $client = Client::where('slug', $slug);
+        $client = Client::where('slug', '=', $slug)->first();
         $client->name = $clientData['client-name'];
         $client->siren = $clientData['client-siren'];
         $client->address = $clientData['client-address'];
         $client->zip = $clientData['client-zip'];
         $client->city = $clientData['client-city'];
         $client->phone = $clientData['client-phone'];
-        $client->slug = $clientData['client-slug'];
+        $client->slug = Str::slug($clientData['client-name']);
 
         $client->update($clientData);
+    }
+
+    public function deleteOne(string $slug): void
+    {
+        Client::whereSlug($slug)->delete();
     }
 }

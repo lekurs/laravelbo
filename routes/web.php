@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\FirstController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,18 +30,23 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
 
-    Route::prefix('clients')->group(function () {
-        Route::get('/', 'Admin\Clients\ClientsController@showAll')->name('showClients');
-        Route::get('/add', 'Admin\Clients\ClientCreationController@clientCreation')->name('addClient');
-        Route::post('/add', 'Admin\Clients\ClientCreationController@addClient')->name('addClient');
-        Route::get('/show/{slug}', 'Admin\Clients\ClientUpdateController@getOneClient')->name('showOne');
-        Route::post('/clients/edit/{slug}', 'Admin\Clients\ClientsController@editBySlug')->name('updateClient');
-        Route::post('/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
+    Route::group(['prefix' => 'clients'], function () {
+            Route::get('/', 'Admin\Clients\ClientsController@showAll')->name('showClients');
+            Route::get('/add', 'Admin\Clients\ClientCreationController@clientCreation')->name('addClient');
+            Route::get('/show/{slug}', 'Admin\Clients\ClientUpdateController@getOneClient')->name('showOne');
+            Route::get('/del/{slug}', 'Admin\Clients\ClientDeleteController@deleteOne')->name('deleteClient');
+            Route::post('/add', 'Admin\Clients\ClientCreationController@addClient')->name('addClient');
+            Route::post('/clients/edit/{slug}', 'Admin\Clients\ClientsController@editBySlug')->name('updateClient');
 
-        Route::prefix('contact')->group(function () {
-            Route::get('/show', 'Admin\Contacts\ContactController@showOne')->name('showContact');
-            Route::post('/edit', 'Admin\Contacts\ContactEditController@EditBySlug')->name('editContact');
+        Route::group(['prefix' => 'contact'], function () {
+            Route::post('/show', 'Admin\Contacts\ContactController@showOne')->name('showContact');
+            Route::post('/edit/{slug}', 'Admin\Contacts\ContactEditController@editBySlug')->name('editContact');
+            Route::get('/del/{slug}', 'Admin\Contacts\ContactDeleteController@deleteOne')->name('deleteContact');
         });
+    });
+
+    Route::group(['prefix' => 'devis'], function () {
+        Route::get('/', 'Admin\Estimations\EstimationController@show')->name('showEstimations');
     });
 });
 
