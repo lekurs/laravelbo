@@ -15,8 +15,10 @@ class NavigationTable extends Migration
     {
         Schema::create('navigations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('body')->nullable();
+            $table->string('wording');
+            $table->text('position')->nullable();
+            $table->text('parent')->nullable();
+            $table->text('parentorder')->nullable();
         });
     }
 

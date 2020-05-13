@@ -9,8 +9,10 @@ class Navigation extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title',
-        'body'
+        'wording',
+        'position',
+        'parent',
+        'parentOrder'
     ];
 
 }
