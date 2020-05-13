@@ -14,10 +14,8 @@ class EstimationController extends Controller
     {
         $estimations = Client::all();
 
-        $json = json_encode($estimations);
-
         return view('bo.admin.estimations.show-estimations', [
-            'json' => $json
+            'data' => $data
         ]);
     }
 }

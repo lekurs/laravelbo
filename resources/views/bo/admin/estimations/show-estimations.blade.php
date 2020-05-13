@@ -15,14 +15,16 @@
                aria-label="Search">
     </form>
 
+        <?php var_dump($data); ?>
+
 @endsection
 @section('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 <script>
     $('.search-bar').autocomplete({
         minLength: 3,
-        source: <?php echo json_decode($json);?>
+        source: <?php $data; ?>
     });
 </script>
 @endsection

@@ -1,4 +1,4 @@
-$('.search-bar').autocomplete({
+$('.search-bar').search({
     minLength: 3,
     // source:
 });
