@@ -30,10 +30,15 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
 
+    Route::group(['prefix' => 'menus'], function () {
+        Route::get('/', 'Admin\Navigation\NavigationCreationController@show')->name('showNavigation');
+    });
+
     Route::group(['prefix' => 'clients'], function () {
             Route::get('/', 'Admin\Clients\ClientsController@showAll')->name('showClients');
             Route::get('/add', 'Admin\Clients\ClientCreationController@clientCreation')->name('addClient');
-            Route::get('/show/{slug}', 'Admin\Clients\ClientUpdateController@getOneClient')->name('showOne');
+            Route::get('/show/{slug}', 'Admin\Clients\ClientShowController@showOne')->name('showOne');
+            Route::get('/edit/{slug}', 'Admin\Clients\ClientUpdateController@getOneClient')->name('editOne');
             Route::get('/del/{slug}', 'Admin\Clients\ClientDeleteController@deleteOne')->name('deleteClient');
             Route::post('/add', 'Admin\Clients\ClientCreationController@addClient')->name('addClient');
             Route::post('/clients/edit/{slug}', 'Admin\Clients\ClientsController@editBySlug')->name('updateClient');

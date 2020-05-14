@@ -5,7 +5,11 @@
     <title>Resolving - @yield('title')</title>
     @yield('styles')
     <script defer src="{{ mix('js/app.js') }}"></script>
+{{--    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>--}}
+
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content-tools.min.css')}}">
+{{--    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">--}}
 
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">

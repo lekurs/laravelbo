@@ -11,8 +11,24 @@ const mix = require('laravel-mix');
  |
  */
 //
-mix.js('resources/js/app.js', 'public/js')
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            'morris.js': 'morris.js/morris.js',
+            'jquery-ui': 'jquery-ui',
+        },
+    }
+})
+
+// mix.styles('ressources/css/content-tools.min.css', 'public/css');
+
+mix.js('resources/js/app.js', 'public/js');
 mix.sass('resources/sass/app.scss', 'public/css');
+
+mix.config.fileLoaderDirs.fonts = 'public/images';
+mix.copyDirectory('resources/assets/fonts', 'public/images');
+
 
 
 //Si utilisation de fonts hors google

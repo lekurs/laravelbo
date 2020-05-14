@@ -12,7 +12,9 @@ class Navigation extends Model
         'wording',
         'position',
         'parent',
-        'parentOrder'
+        'parentOrder',
+        'favorite',
+        'active'
     ];
 
 }

@@ -553,15 +553,132 @@ h2.mout-bo-title-3-edit-page {
 
 // !!Edit page!!
 
-//.ui-test {
-//  width: 400px;
-//  line-height: 2.5em;
-//  height: 2.5em;
-//  cursor: pointer;
-//  background: #ffffff;
-//  border: 1px dashed #000000;
-//  padding-left: 10px;
-//}
-//
+// Client Page //
+div.mout-client-card-container {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+
+    & div.mout-client-card-left-content {
+        width: 45%;
+        padding: 20px;
+        -webkit-box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
+        -moz-box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
+        box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
+
+        & h3.mout-title-client-card {
+            color: #D5D5D5;
+            font-size: 40px;
+            font-family: $bo-font;
+        }
+
+        & h4.mout-title-client-name {
+            color: $bo-black-color;
+            font-size: 45px;
+            text-transform: uppercase;
+            font-family: $bo-font;
+            line-height: 65px;
+        }
+
+        & p {
+            font-size: 20px;
+            font-family: $bo-font;
+            line-height: 50px;
+            margin-bottom: 0;
+
+            &:nth-of-type(1), &:nth-of-type(3), &:nth-of-type(6) {
+                font-weight: 700;
+            }
+
+        }
+
+        & p.mout-client-card-city-informations {
+            padding-left: 35px;
+            line-height: inherit;
+        }
+
+        & span i.contact-icon {
+            margin-right: 20px;
+        }
+
+        & span i.contact-smiley {
+            color: #62E600;
+        }
+    }
+
+    & div.mout-client-card-right-content {
+        width: 45%;
+        padding: 20px;
+        display: grid;
+        grid-row-gap: 30px;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, 1fr);
+
+        & div.mout-client-card-right-informations-container {
+            display: grid;
+            grid-template-rows: 90px 40px 60px;
+            width: 50%;
+            justify-self: center;
+            text-align: center;
+            -webkit-box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
+            -moz-box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
+            box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
+
+            & p:nth-of-type(1) {
+                font-size: 40px;
+                color: $bo-white-color;
+            }
+
+            & p.mout-client-card-title {
+                font-family: $bo-font;
+                font-weight: 200;
+                font-size: 20px;
+                align-self: center;
+
+            & + p, span.mout-client-card-total-ca-span {
+                    font-weight: 700;
+                    font-size: 25px;
+                }
+            }
+
+            & p#mout-client-created-at {
+                background: #03DBC2;
+            }
+
+            & p#mout-client-ca {
+                background: #D90000;
+            }
+
+            & p#mout-client-estimations {
+                background: #FF9D00;
+            }
+
+            & p#mout-client-bills {
+                background: #7A63F9;
+            }
+
+            & p#mout-client-total-ca {
+                background: #03DBC2;
+                grid-row: 1 / -1;
+                height: 160px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &:last-of-type {
+                grid-column: 1 / -1;
+                display: grid;
+                grid-template-columns: 160px auto;
+                grid-template-rows: 160px;
+            }
+        }
+    }
+}
+// !!Client Page!! //
+
+//Estimation Page //
+
+// !!Estimation Page!! //
 
 //Section END

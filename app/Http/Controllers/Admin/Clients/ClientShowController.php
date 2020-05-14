@@ -3,16 +3,18 @@
 
 namespace App\Http\Controllers\Admin\Clients;
 
+
 use App\Http\Controllers\Controller;
 use App\Repository\ClientRepository;
+use Illuminate\View\View;
 
-class ClientUpdateController extends Controller
+class ClientShowController extends Controller
 {
-    public function getOneClient(ClientRepository $repository, $slug)
+    public function showOne($slug, ClientRepository $repository): View
     {
         $client = $repository->getOneBySlug($slug);
 
-        return view('bo.admin.clients.edit-one', [
+        return view('bo.admin.clients.client-show-one', [
             'client' => $client,
         ]);
     }

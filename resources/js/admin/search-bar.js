@@ -1,4 +1,6 @@
-$('.search-bar').search({
+const $search = $('.search-bar');
+
+$search.search({
     minLength: 3,
-    // source:
+    source: $search.data('source')
 });

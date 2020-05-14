@@ -25,4 +25,9 @@ class Client extends Model
     {
         return $this->hasMany('App\Contact', 'client_id');
     }
+
+    public function estimations(): HasMany
+    {
+        return $this->hasMany('App\Estimation', 'client_id');
+    }
 }

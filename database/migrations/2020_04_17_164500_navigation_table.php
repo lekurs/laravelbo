@@ -16,9 +16,11 @@ class NavigationTable extends Migration
         Schema::create('navigations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('wording');
-            $table->text('position')->nullable();
-            $table->text('parent')->nullable();
-            $table->text('parentorder')->nullable();
+            $table->integer('position')->nullable();
+            $table->integer('parent')->nullable();
+            $table->integer('parentorder')->nullable();
+            $table->boolean('favorite')->nullable();
+            $table->boolean('active')->nullable();
         });
     }
 

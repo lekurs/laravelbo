@@ -15,7 +15,8 @@ class EstimationController extends Controller
         $estimations = Client::all();
 
         return view('bo.admin.estimations.show-estimations', [
-            'data' => $data
+            'estimations' => $estimations,
+            'data' => 0
         ]);
     }
 }

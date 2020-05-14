@@ -20,12 +20,14 @@
                 <th>Adresse</th>
                 <th>Code postal</th>
                 <th>Ville</th>
+                <th><i class="fas fa-eye"></i></th>
                 <th><i class="fas fa-edit"></i></th>
+                <th><i class="fas fa-trash"></i></th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td colspan="6" class="mout-bo-table-header-padding">&nbsp;</td>
+                <td colspan="7" class="mout-bo-table-header-padding">&nbsp;</td>
             </tr>
 
             @if($clients)
@@ -38,7 +40,8 @@
                         <td>{{$client->address}}</td>
                         <td>{{$client->zip}}</td>
                         <td>{{$client->city}}</td>
-                        <td data-slug="{{$client->id}}"><a href="{{route('showOne', $client->slug)}}"><i class="fas fa-edit edit-ico"></i></a></td>
+                        <td data-slug="{{$client->id}}"><a href="{{route('showOne', $client->slug)}}"><i class="fas fa-eye"></i></a></td>
+                        <td data-slug="{{$client->id}}"><a href="{{route('editOne', $client->slug)}}"><i class="fas fa-edit edit-ico"></i></a></td>
                         <td data-slug="{{$client->slug}}"><a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a></td>
                     </tr>
                 @endforeach
