@@ -1,7 +1,8 @@
 {
+    "/css/app.css": "/css/app.css",
     "/js/app.js": "/js/app.js",
     "/bocontact.js": "/bocontact.js",
     "/navigation.js": "/navigation.js",
-    "/wysiwyg.js": "/wysiwyg.js",
-    "/css/app.css": "/css/app.css"
+    "/wysiwyg-upload-img.js": "/wysiwyg-upload-img.js",
+    "/wysiwyg.js": "/wysiwyg.js"
 }

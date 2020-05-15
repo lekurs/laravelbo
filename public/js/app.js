@@ -40306,36 +40306,13 @@ __webpack_require__(/*! ./admin/bo-edit-contact */ "./resources/js/admin/bo-edit
 __webpack_require__.e(/*! import() | bocontact */ "bocontact").then(__webpack_require__.t.bind(__webpack_require__, /*! ./admin/call-bo-edit-contact */ "./resources/js/admin/call-bo-edit-contact.js", 7));
 __webpack_require__.e(/*! import() | navigation */ "navigation").then(__webpack_require__.t.bind(__webpack_require__, /*! ./admin/nav */ "./resources/js/admin/nav.js", 7));
 __webpack_require__.e(/*! import() | wysiwyg */ "wysiwyg").then(__webpack_require__.t.bind(__webpack_require__, /*! ./vendors/wysiwyg/content-tools.js */ "./resources/js/vendors/wysiwyg/content-tools.js", 7));
+__webpack_require__.e(/*! import() | wysiwyg-upload-img */ "wysiwyg-upload-img").then(__webpack_require__.t.bind(__webpack_require__, /*! ./vendors/wysiwyg/sandbox.js */ "./resources/js/vendors/wysiwyg/sandbox.js", 7));
 window.addEventListener('load', function () {
   var editor;
   ContentTools.StylePalette.add([new ContentTools.Style('Author', 'author', ['p'])]);
   editor = ContentTools.EditorApp.get();
   editor.init('*[data-editable]', 'data-name');
-}); // var toolbarOptions = [
-//     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-//     ['blockquote', 'code-block'],
-//
-//     [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-//     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-//     [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-//     [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-//     [{ 'direction': 'rtl' }],                         // text direction
-//
-//     [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-//     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-//
-//     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-//     [{ 'font': [] }],
-//     [{ 'align': [] }],
-//
-//     ['clean']                                         // remove formatting button
-// ];
-// var quill = new Quill('#test', {
-//     theme: 'snow',
-//     modules: {
-//         toolbar: toolbarOptions
-//     }
-//     });
+});
 })();
 
 (() => {

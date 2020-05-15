@@ -681,4 +681,20 @@ div.mout-client-card-container {
 
 // !!Estimation Page!! //
 
+
+ul.transport-item {
+    & li {
+        list-style: none;
+        margin-top: 16px !important;
+        margin-left: 0 !important;
+    }
+}
+li.placeholder-list {
+    //display: flex;
+    height: 2.5em; line-height: 2.5em;
+    border: 1px solid #dad55e;
+    background: #fffa90;
+    color: #777620;
+}
+
 //Section END

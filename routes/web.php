@@ -32,6 +32,7 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['prefix' => 'menus'], function () {
         Route::get('/', 'Admin\Navigation\NavigationCreationController@show')->name('showNavigation');
+        Route::post('/menus/save', 'Admin\Navigation\NavigationSaveController@save')->name('saveNavigation');
     });
 
     Route::group(['prefix' => 'clients'], function () {

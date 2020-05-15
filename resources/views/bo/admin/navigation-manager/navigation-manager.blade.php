@@ -5,25 +5,20 @@
 <h2 class="admin-title">Modification du menu</h2>
 
 <div id="navigation">
-    <form action="#" id="my-nav" class="form" method="post">
-        <ul class="drag-nav">
-            @foreach($navigations as $navigation)
-            <li class="drag-nav-list">{{ $navigation->wording }}
-                <input type="text" class="position-nav" value="{{ $navigation->position }}">
-                <input type="text" class="position-parent-nav-depth" value="{{ $navigation->parentOrder }}">
-            </li>
+    <ul class="drag-nav">
+        @foreach($navigations as $navigation)
+        <li class="drag-nav-list" id="{{$navigation->id}}" data-level="0">{{ $navigation->wording }}</li>
 {{--            <li class="drag-zone"></li>--}}
-@endforeach
-        </ul>
-{{--        <button type="submit" class="btn btn-dark">Enregistrer</button>--}}
-    </form>
+        @endforeach
+    </ul>
+    <button type="button" class="btn btn-dark mout-add-menus-button">Enregistrer</button>
 </div>
 {{--    @empty($navigation)--}}
         <p>Pas de navigation</p>
 
 
 <div class="mout-create-navigation-container">
-    <button type="button" class="btn mout-add-buttton"><i class="fas fa-plus"></i> </button>
+    <button type="button" class="btn mout-save-menus-button"><i class="fas fa-plus"></i> </button>
 </div>
 
 <div class="mout-create-navigation-content">
