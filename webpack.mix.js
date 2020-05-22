@@ -28,6 +28,7 @@ mix.sass('resources/sass/app.scss', 'public/css');
 
 mix.config.fileLoaderDirs.fonts = 'public/images';
 mix.copyDirectory('resources/assets/fonts', 'public/images');
+mix.copyDirectory('resources/assets/images', 'public/images');
 
 
 

@@ -3,10 +3,9 @@
 @section('title', 'Réalisation d\'un devis')
 
 @section('body')
+    <h2 class="admin-title">Créer un devis</h2>
     <div class="mout-estimation-container">
-        <form action="" method="post" name="estimation-creation" id="estimation-creation">
-
-        </form>
+        @include('bo.forms._add_estimation')
     </div>
 
 @endsection

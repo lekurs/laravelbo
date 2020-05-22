@@ -20,14 +20,13 @@
                 <th>Adresse</th>
                 <th>Code postal</th>
                 <th>Ville</th>
-                <th><i class="fas fa-eye"></i></th>
-                <th><i class="fas fa-edit"></i></th>
-                <th><i class="fas fa-trash"></i></th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td colspan="7" class="mout-bo-table-header-padding">&nbsp;</td>
+                <td colspan="9" class="mout-bo-table-header-padding">&nbsp;</td>
             </tr>
 
             @if($clients)
@@ -40,9 +39,16 @@
                         <td>{{$client->address}}</td>
                         <td>{{$client->zip}}</td>
                         <td>{{$client->city}}</td>
-                        <td data-slug="{{$client->id}}"><a href="{{route('showOne', $client->slug)}}"><i class="fas fa-eye"></i></a></td>
-                        <td data-slug="{{$client->id}}"><a href="{{route('editOne', $client->slug)}}"><i class="fas fa-edit edit-ico"></i></a></td>
-                        <td data-slug="{{$client->slug}}"><a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a></td>
+                        <td data-slug="{{$client->id}}">
+                            <a href="{{route('showOne', $client->slug)}}"><i class="fas fa-eye"></i></a>
+                            <a href="{{route('editOne', $client->slug)}}"><i class="fas fa-edit edit-ico"></i></a>
+                            <a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a>
+                        </td>
+                        <td><a href="{{route('showEstimations', $client->id)}}"><i class="fas fa-plus add-estimation-ico"></i></a></td>
+{{--                        <td class="mout-cliens-more-actions" data-target="options-{{$client->id}}"><i class="fas fa-ellipsis-v"></i>--}}
+{{--                            <div class="test" id="options-{{$client->id}}">{{$client->name}}</div>--}}
+{{--                        </td>--}}
+{{--                        <td data-slug="{{$client->slug}}"><a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a></td>--}}
                     </tr>
                 @endforeach
             @else
@@ -52,11 +58,5 @@
             @endif
             </tbody>
         </table>
-
-{{--        @include('bo.forms._add_client')--}}
-{{--        @include('bo.forms._edit_client')--}}
     </div>
 @endsection
-
-@section('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

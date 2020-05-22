@@ -19,6 +19,7 @@ class CreateEstimationsTable extends Migration
             $table->string('title', '255');
             $table->text('body');
             $table->decimal('price', 6, 2);
+//            $table->boolean('validation')->default(false);
             $table->integer('client_id')->unsigned();
             $table->integer('contact_id')->unsigned();
             $table->timestamps();

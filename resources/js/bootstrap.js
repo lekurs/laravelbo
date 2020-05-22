@@ -2,7 +2,6 @@ import JQuery from 'jquery'
 import Lodash from 'lodash'
 import Popper from 'popper.js'
 import Axios from 'axios'
-// import 'quill'
 import 'bootstrap'
 
 

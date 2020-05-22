@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['prefix' => 'menus'], function () {
         Route::get('/', 'Admin\Navigation\NavigationCreationController@show')->name('showNavigation');
-        Route::post('/menus/save', 'Admin\Navigation\NavigationSaveController@save')->name('saveNavigation');
+        Route::post('/save', 'Admin\Navigation\NavigationSaveController@save')->name('saveNavigation');
     });
 
     Route::group(['prefix' => 'clients'], function () {
@@ -52,7 +52,10 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::group(['prefix' => 'devis'], function () {
-        Route::get('/', 'Admin\Estimations\EstimationController@show')->name('showEstimations');
+        Route::get('/client/{idClient}', 'Admin\Estimations\EstimationController@show')->name('showEstimations');
+        Route::get('/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
+        Route::get('/{id}/pdf', 'Admin\Estimations\EstimationPDFController@create')->name('createPDFEstimation');
+        Route::post('/creer', 'Admin\Estimations\EstimationCreationController@createEstimation')->name('createEstimation');
     });
 });
 

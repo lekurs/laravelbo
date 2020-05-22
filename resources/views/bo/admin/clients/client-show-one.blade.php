@@ -9,12 +9,12 @@
             <h4 class="mout-title-client-name">{{$client->name}}</h4>
 
             @forelse($client->contacts as $contact)
-            <p><span><i class="far fa-smile contact-icon contact-smiley"></i></span>{{$contact->name}}</p>
+            <p class="mout-client-card-info-bolder"><span><i class="far fa-smile contact-icon contact-smiley"></i></span>{{$contact->name}}</p>
             <p><span><i class="far fa-envelope contact-icon contact-envelope"></i></span>{{$contact->email}}</p>
-            <p><span><i class="fas fa-phone contact-icon contact-phone"></i></span>{{$contact->phone}}</p>
+            <p class="mout-client-card-info-bolder"><span><i class="fas fa-phone contact-icon contact-phone"></i></span>{{$contact->phone}}</p>
             <p><span><i class="fas fa-map-marker-alt contact-icon contact-marker"></i></span>{{$client->address}}</p>
             <p class="mout-client-card-city-informations">{{$client->zip}} {{$client->city}} </p>
-            <p><span><i class="fas fa-map-marker-alt contact-icon contact-marker"></i></span>{{$client->siren}}</p>
+            <p class="mout-client-card-info-bolder"><span><i class="fas fa-map-marker-alt contact-icon contact-marker"></i></span>{{$client->siren}}</p>
             @empty
             <p>pas de contact</p>
             @endforelse
@@ -51,5 +51,30 @@
                 </p>
             </div>
         </div>
+    </div>
+
+    <div class="mout-estimations-container">
+        <table class="table-striped table-hover mout-bo-table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Intitulé</th>
+                <th>Prix</th>
+                <th>Date</th>
+                <th>&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($client->estimationsByOrder as $estimation)
+            <tr>
+                <td>{{$estimation->number}}</td>
+                <td><a href="{{route('showOneEstimation', $estimation->id)}}" >{{$estimation->title}}</a></td>
+                <td>{{$estimation->price}}</td>
+                <td>{{$estimation->created_at->format('d/m/Y')}}</td>
+                <td><i class="fas fa-circle @if($estimation->validation === 1) green-circle @else red-circle @endif"></i></td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection

@@ -23,11 +23,21 @@ class Client extends Model
      */
     public function contacts(): HasMany
     {
-        return $this->hasMany('App\Contact', 'client_id');
+        return $this->hasMany(Contact::class, 'client_id');
     }
 
     public function estimations(): HasMany
     {
-        return $this->hasMany('App\Estimation', 'client_id');
+        return $this->hasMany(Estimation::class, 'client_id');
+    }
+
+    public function estimationsIsActive(): HasMany
+    {
+        return $this->hasMany(Estimation::class, 'client_id')->isActive();
+    }
+
+    public function estimationsByOrder(): HasMany
+    {
+        return $this->hasMany(Estimation::class, 'client_id')->orderBy('created_at', 'asc');
     }
 }

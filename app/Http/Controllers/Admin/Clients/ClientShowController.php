@@ -12,7 +12,7 @@ class ClientShowController extends Controller
 {
     public function showOne($slug, ClientRepository $repository): View
     {
-        $client = $repository->getOneBySlug($slug);
+        $client = $repository->getOneBySlugWithEstimations($slug);
 
         return view('bo.admin.clients.client-show-one', [
             'client' => $client,

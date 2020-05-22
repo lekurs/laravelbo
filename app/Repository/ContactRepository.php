@@ -5,6 +5,7 @@ namespace App\Repository;
 
 
 use App\Contact;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
 class ContactRepository
@@ -24,6 +25,12 @@ class ContactRepository
         $contact->slug = Str::slug($contactData['contact-name']);
 
         $contact->save();
+    }
+
+    public function getAllByIdClient(int $id): Collection
+    {
+        return Contact::has('client')->get();
+
     }
 
     public function deleteOne(string $slug):void

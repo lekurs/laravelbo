@@ -17,7 +17,7 @@ class ClientCreationController extends Controller
         return \view('bo.admin.clients.add-client');
     }
 
-    public function addClient(Request $request, ClientRepository $repository, ClientCreation $clientCreation, ContactCreation $contactCreation)
+    public function addClient(ClientRepository $repository, ClientCreation $clientCreation, ContactCreation $contactCreation)
     {
         $validator = $clientCreation->all();
         $validatesContact = $contactCreation->all();

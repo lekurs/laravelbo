@@ -5,13 +5,41 @@
 <h2 class="admin-title">Modification du menu</h2>
 
 <div id="navigation">
-    <ul class="drag-nav">
+    <div class="dd">
+        <ol class="dd-list">
         @foreach($navigations as $navigation)
-        <li class="drag-nav-list" id="{{$navigation->id}}" data-level="0">{{ $navigation->wording }}</li>
-{{--            <li class="drag-zone"></li>--}}
+            <li class="dd-item" data-id="{{$navigation->id}}">
+                <div class="dd-handle">{{$navigation->wording}}</div>
+{{--                <div class="dd-handle">Item 1</div>--}}
+{{--            </li>--}}
+{{--            <li class="dd-item" data-id="2">--}}
+{{--                <div class="dd-handle">Item 2</div>--}}
+{{--            </li>--}}
+{{--            <li class="dd-item" data-id="3">--}}
+{{--                <div class="dd-handle">Item 3</div>--}}
+{{--                <ol class="dd-list">--}}
+{{--                    <li class="dd-item" data-id="4">--}}
+{{--                        <div class="dd-handle">Item 4</div>--}}
+{{--                    </li>--}}
+{{--                    <li class="dd-item" data-id="5">--}}
+{{--                        <div class="dd-handle">Item 5</div>--}}
+{{--                    </li>--}}
+{{--                </ol>--}}
+            </li>
         @endforeach
-    </ul>
-    <button type="button" class="btn btn-dark mout-add-menus-button">Enregistrer</button>
+        </ol>
+        <form action="" id="form-navigation">
+            <textarea name="navigation" id="nestable-output"></textarea>
+
+        </form>
+        <button type="button" class="btn btn-dark mout-add-menus-button">Enregistrer</button>
+    </div>
+
+{{--    <ul class="drag-nav">--}}
+{{--        @foreach($navigations as $navigation)--}}
+{{--        <li class="drag-nav-list" id="{{$navigation->id}}" data-level="0">{{ $navigation->wording }}</li>--}}
+{{--        @endforeach--}}
+{{--    </ul>--}}
 </div>
 {{--    @empty($navigation)--}}
         <p>Pas de navigation</p>

@@ -6,6 +6,8 @@ namespace App\Repository;
 
 use App\Client;
 use App\Contact;
+use App\Estimation;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class ClientRepository
@@ -33,9 +35,25 @@ class ClientRepository
         $client->contacts()->save($contact);
     }
 
-    public function getOneBySlug(string $slug)
+    public function getOneBySlug(string $slug): Client
     {
-        return Client::whereSlug($slug)->with('contacts')->first();
+        return Client::whereSlug($slug)->first();
+
+    }
+
+    public function getOneBySlugWithEstimations(string $slug): Client
+    {
+        return Client::whereSlug($slug)
+            ->with('estimationsByOrder')
+            ->first();
+
+    }
+
+    public function getOneBySlugEstimationActive(string $slug): Client
+    {
+        return Client::whereSlug($slug)
+            ->with('estimationsIsActive')
+            ->first();
     }
 
     public function editBySlug(array $clientData, string $slug)

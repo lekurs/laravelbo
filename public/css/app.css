@@ -11780,9 +11780,7 @@ div.mout-client-card-container div.mout-client-card-left-content p {
   margin-bottom: 0;
 }
 
-div.mout-client-card-container div.mout-client-card-left-content p:nth-of-type(1),
-div.mout-client-card-container div.mout-client-card-left-content p:nth-of-type(3),
-div.mout-client-card-container div.mout-client-card-left-content p:nth-of-type(6) {
+div.mout-client-card-container div.mout-client-card-left-content p.mout-client-card-info-bolder {
   font-weight: 700;
 }
 
@@ -11865,6 +11863,144 @@ div.mout-client-card-container div.mout-client-card-right-content div.mout-clien
   display: grid;
   grid-template-columns: 160px auto;
   grid-template-rows: 160px;
+}
+
+div.mout-admin-estimation-container {
+  font-family: "AristaProAlternate";
+}
+
+div.mout-estimation-header-container,
+div.mout-estimation-footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+div.mout-estimation-header-container h3#mout-estimation-number,
+div.mout-estimation-footer-container h3#mout-estimation-number {
+  margin: 2em 0 1em;
+  font-family: "AristaProAlternateHairline";
+  font-size: 30px;
+  position: relative;
+  width: 33%;
+}
+
+div.mout-estimation-header-container h3#mout-estimation-number span.mout-estimation-number,
+div.mout-estimation-footer-container h3#mout-estimation-number span.mout-estimation-number {
+  font-family: "AristaProAlternate";
+}
+
+div.mout-estimation-header-container h3#mout-estimation-number::after,
+div.mout-estimation-footer-container h3#mout-estimation-number::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -2px;
+  width: 100%;
+  height: 3px;
+  background: #ffed3b;
+}
+
+div.mout-estimation-header-container p#mout-estimation-date,
+div.mout-estimation-footer-container p#mout-estimation-date {
+  margin: 2em 0 1em;
+  font-family: "AristaProAlternateHairline";
+  width: 33%;
+  font-size: 20px;
+}
+
+H4.mout-estimation-client-name {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+p.mout-estimation-contact-informations {
+  font-family: "AristaProAlternateLight";
+  margin-bottom: 0;
+}
+
+H4.mout-estimation-description-title {
+  margin-top: 3em;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+  position: relative;
+}
+
+H4.mout-estimation-description-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -2px;
+  width: 100%;
+  height: 2px;
+  background: #ffed3b;
+}
+
+p.mout-estimation-description-body {
+  margin-top: 1.5em;
+}
+
+p#mout-estimation-blank {
+  position: relative;
+  line-height: 2em;
+}
+
+p#mout-estimation-blank::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -2px;
+  width: 100%;
+  height: 2px;
+  background: #ffed3b;
+}
+
+div.mout-estimation-footer-container {
+  align-items: flex-start;
+  margin-top: 2em;
+  font-family: "AristaProAlternateLight";
+  font-size: 18px;
+}
+
+div.mout-estimation-footer-container div.mout-estimation-bill-container {
+  display: flex;
+  justify-content: flex-end;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+}
+
+div.mout-estimation-footer-container div.mout-estimation-bill-container div.mout-estimation-bill-content-details {
+  margin-right: 3em;
+}
+
+div.mout-estimation-footer-container div.mout-estimation-bill-container div.mout-estimation-bill-content-details p {
+  text-transform: uppercase;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+div.mout-estimation-footer-container div.mout-estimation-bill-container div.mout-estimation-bill-content-price p {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+i.green-circle {
+  color: green;
+}
+
+i.red-circle {
+  color: red;
+}
+
+div.mout-admin-left-panel {
+  width: calc(50% - 50px);
+  float: left;
+  margin-right: 50px;
+}
+
+div.mout-admin-right-panel {
+  width: calc(50% - 50px);
+  float: right;
 }
 
 ul.transport-item li {

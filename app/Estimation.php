@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -12,6 +13,7 @@ class Estimation extends Model
         'title',
         'body',
         'price',
+        'validation',
     ];
 
     public function client(): BelongsTo
@@ -22,5 +24,10 @@ class Estimation extends Model
     public function contact(): BelongsTo
     {
         return $this->belongsTo('App\Contact', 'contact_id');
+    }
+
+    public function scopeIsActive(Builder $query): Builder
+    {
+        return $query->where('validation', '=', 1);
     }
 }
