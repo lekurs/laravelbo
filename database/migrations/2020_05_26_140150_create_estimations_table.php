@@ -19,13 +19,19 @@ class CreateEstimationsTable extends Migration
             $table->string('title', '255');
             $table->text('body');
             $table->decimal('price', 6, 2);
-//            $table->boolean('validation')->default(false);
+            $table->boolean('validation')->default(false);
             $table->integer('client_id')->unsigned();
             $table->integer('contact_id')->unsigned();
+            $table->integer('invoice_id')->unsigned()->nullable();
+            $table->integer('downpaiementinvoice_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')
                 ->onDelete('cascade');
             $table->foreign('contact_id')->references('id')->on('contacts')
+                ->onDelete('cascade');
+            $table->foreign('invoice_id')->references('id')->on('invoices')
+                ->onDelete('cascade');
+            $table->foreign('downpaiementinvoice_id')->references('id')->on('down_paiement_invoices')
                 ->onDelete('cascade');
         });
     }

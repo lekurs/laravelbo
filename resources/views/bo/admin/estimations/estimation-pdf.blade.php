@@ -1,7 +1,7 @@
 <style>
     table {
         width: 100%;
-        font-family: AristaProAlternate-ExtraLight;
+        font-family: aristaproalternate;
         /*border: 1px solid red;*/
     }
 
@@ -56,15 +56,12 @@
         </table>
     </page_footer>
 
-
-    <table style="margin-top: 40mm" class="test">
+    <table style="margin-top: 30mm" class="test">
         <tr>
-            <td style="width: 50%; height: 30px; border-bottom: 1px solid yellow; font-size: 18px">
-{{--                <div style="border-bottom: 1px solid yellow; width: 30%; font-size: 18px">--}}
-                    DEVIS réf : <span class="mout-estimation-number" style="font-family:'test'; ">{{$estimation->number}}</span>
-{{--                </div>--}}
+            <td style="width: 30%; height: 30px; border-bottom: 1px solid yellow; font-size: 18px">
+                DEVIS réf : <span class="mout-estimation-number" style=" ">{{$estimation->number}}</span>
             </td>
-            <td style="width: 50%; text-align: right">Fait à le Chesnay, le {{$estimation->created_at->format('d/m/Y')}}</td>
+            <td style="width: 70%; text-align: right">Fait à le Chesnay, le {{$estimation->created_at->format('d/m/Y')}}</td>
         </tr>
 
         <tr>
@@ -83,16 +80,17 @@
             <td colspan="2">{{$estimation->contact->email}}</td>
         </tr>
     </table>
-
-    <table style="margin-top: 20mm; table-layout: fixed; border-bottom: 1px solid yellow; padding-bottom: 5mm">
+    <table style="margin-top: 10mm; table-layout: fixed; border-bottom: 1px solid yellow; padding-bottom: 5mm">
         <tr>
-            <td style="width: 70%; border-bottom: 1px solid yellow"><h2>Description</h2></td>
-            <td style="width: 15%; border-bottom: 1px solid yellow; text-align: center"><h2>PV HT</h2></td>
+            <td style="width: 85%; border-bottom: 1px solid yellow"><h2>Description</h2></td>
+            <td style="width: 15%; border-bottom: 1px solid yellow; text-align: right"><h2>PV HT</h2></td>
         </tr>
         <tr>
-            <td colspan="2" style="width: 50%; word-break: break-word; font-weight: bold; font-size: 14px; padding-bottom: 5mm; padding-top: 5mm">{{$estimation->body}}</td>
+            <td style="width:85%; word-break: break-word; font-size: 14px; padding-top: 5mm">{!! $estimation->body !!}</td>
+            <td style="width: 15%">&nbsp;</td>
         </tr>
     </table>
+
     <table style="margin-top: 10mm">
         <tr>
             <td style="text-align: right; width: 80%; font-weight: bold; text-transform: uppercase">Total HT : </td>
@@ -106,21 +104,23 @@
             <td style="text-align: right; width: 80%; font-weight: bold; text-transform: uppercase">Total TTC : </td>
             <td style="text-align: right; width: 20%; font-weight: bold; text-transform: uppercase">{{number_format(($estimation->price * 1.2), 2)}} €</td>
         </tr>
-    </table>
+        </table>
+        <nobreak>
+        <table style="margin-top: 30mm">
+            <tr>
+                <td style="width: 80%">Conditions de paiement : </td>
+                <td style="width: 20%; text-align: right">Date et signature :</td>
+            </tr>
 
-    <table style="margin-top: 30mm">
-        <tr>
-            <td style="width: 80%">Conditions de paiement : </td>
-            <td style="width: 20%; text-align: right">Date et signature :</td>
-        </tr>
+            <tr>
+                <td colspan="2" style="width: 100%; text-align: right">Devis signé le :  </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 100%; text-align: right">par : </td>
+            </tr>
+        </table>
+    </nobreak>
 
-        <tr>
-            <td colspan="2" style="width: 100%; text-align: right">Devis signé le :  </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="width: 100%; text-align: right">par : </td>
-        </tr>
-    </table>
 
 </page>
 

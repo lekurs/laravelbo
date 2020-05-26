@@ -4,7 +4,7 @@
 namespace App\Repository;
 
 
-use App\Navigation;
+use App\Http\Entity\Navigation;
 
 class NavigationRepository
 {

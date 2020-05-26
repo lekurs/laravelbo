@@ -25,16 +25,30 @@ Route::get('/posts/show', 'FirstController@showAll')->name('showAllPosts');
 
 Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 
+Route::get('/test/seeders/client', function () {
+    return factory(\App\Http\Entity\Client::class, 50)->create();
+});
+
+Route::get('/test/seeders/contact', function () {
+    return factory(\App\Http\Entity\Contact::class, 50)->create();
+});
+
+Route::get('/test/seeders', function () {
+    return factory(\App\Http\Entity\Estimation::class, 50)->create();
+});
+
 
 //Administration
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
 
+    //Menus
     Route::group(['prefix' => 'menus'], function () {
         Route::get('/', 'Admin\Navigation\NavigationCreationController@show')->name('showNavigation');
         Route::post('/save', 'Admin\Navigation\NavigationSaveController@save')->name('saveNavigation');
     });
 
+    //Clients
     Route::group(['prefix' => 'clients'], function () {
             Route::get('/', 'Admin\Clients\ClientsController@showAll')->name('showClients');
             Route::get('/add', 'Admin\Clients\ClientCreationController@clientCreation')->name('addClient');
@@ -44,6 +58,7 @@ Route::prefix('admin')->group(function () {
             Route::post('/add', 'Admin\Clients\ClientCreationController@addClient')->name('addClient');
             Route::post('/clients/edit/{slug}', 'Admin\Clients\ClientsController@editBySlug')->name('updateClient');
 
+        //Contacts
         Route::group(['prefix' => 'contact'], function () {
             Route::post('/show', 'Admin\Contacts\ContactController@showOne')->name('showContact');
             Route::post('/edit/{slug}', 'Admin\Contacts\ContactEditController@editBySlug')->name('editContact');
@@ -51,11 +66,18 @@ Route::prefix('admin')->group(function () {
         });
     });
 
+    //Estimations
     Route::group(['prefix' => 'devis'], function () {
         Route::get('/client/{idClient}', 'Admin\Estimations\EstimationController@show')->name('showEstimations');
         Route::get('/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
         Route::get('/{id}/pdf', 'Admin\Estimations\EstimationPDFController@create')->name('createPDFEstimation');
         Route::post('/creer', 'Admin\Estimations\EstimationCreationController@createEstimation')->name('createEstimation');
+        Route::post('/{id}/validation', 'Admin\Estimations\EstimationValidateController@updateValidation')->name('valideEstimation');
+    });
+
+    Route::group(['prefix' => 'facture'], function () {
+       Route::get('/{id}', 'Admin\Invoices\InvoiceCreationController@create')->name('createInvoice');
+       Route::post('/{id}/add', 'Admin\Invoices\InvoiceSaveController@save')->name('saveInvoice');
     });
 });
 

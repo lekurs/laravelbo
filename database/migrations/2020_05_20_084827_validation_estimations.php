@@ -13,9 +13,9 @@ class ValidationEstimations extends Migration
      */
     public function up()
     {
-        Schema::table('estimations', function (Blueprint $table) {
-            $table->boolean('validation')->default(false);
-        });
+//        Schema::table('estimations', function (Blueprint $table) {
+//            $table->boolean('validation')->default(false);
+//        });
     }
 
     /**

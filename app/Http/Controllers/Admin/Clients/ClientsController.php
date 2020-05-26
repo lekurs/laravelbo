@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\Admin\Clients;
 
-use App\Client;
+use App\Http\Entity\Client;
 use \App\Http\Controllers\Controller;
 use App\Http\Requests\Clients\ClientEdit;
 use App\Repository\ClientRepository;
@@ -13,7 +13,7 @@ class ClientsController extends Controller
 {
     public function showAll(Request $request)
     {
-        $clients = Client::all();
+        $clients = Client::paginate(15);
 
         return view('bo.admin.clients.clients', [
             'clients' => $clients,

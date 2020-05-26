@@ -29,25 +29,25 @@
             <div class="mout-client-card-right-informations-container">
                 <p id="mout-client-ca"><i class="far fa-calendar-alt"></i></p>
                 <p class="mout-client-card-title">Ca {{date('M')}}</p>
-                <p>{{$client->created_at->format('d/m/Y')}}</p>
+                <p>{{$sumInvoiceOnMonth}} €</p>
             </div>
 
             <div class="mout-client-card-right-informations-container">
                 <p id="mout-client-estimations"><i class="far far fa-file"></i></p>
                 <p class="mout-client-card-title">Devis</p>
-                <p>{{$client->created_at->format('d/m/Y')}}</p>
+                <p>{{count($client->estimations)}}</p>
             </div>
 
             <div class="mout-client-card-right-informations-container">
                 <p id="mout-client-bills"><i class="fas fa-file-invoice-dollar"></i></p>
                 <p class="mout-client-card-title">Factures</p>
-                <p>{{$client->created_at->format('d/m/Y')}}</p>
+                <p>{{$totalInvoices}}</p>
             </div>
 
             <div class="mout-client-card-right-informations-container">
                 <p id="mout-client-total-ca"><i class="fas fa-euro-sign"></i></p>
-                <p class="mout-client-card-title">Total CA <br>
-                    <span class="mout-client-card-total-ca-span">{{$client->created_at->format('d/m/Y')}}</span>
+                <p class="mout-client-card-title" id="mout-client-total-ca-price">Total CA <br>
+                    <span class="mout-client-card-total-ca-span">{{$totalEstimation}} €</span>
                 </p>
             </div>
         </div>
@@ -61,7 +61,8 @@
                 <th>Intitulé</th>
                 <th>Prix</th>
                 <th>Date</th>
-                <th>&nbsp;</th>
+                <th>Validé</th>
+                <th>Facturé</th>
             </tr>
             </thead>
             <tbody>
@@ -72,6 +73,7 @@
                 <td>{{$estimation->price}}</td>
                 <td>{{$estimation->created_at->format('d/m/Y')}}</td>
                 <td><i class="fas fa-circle @if($estimation->validation === 1) green-circle @else red-circle @endif"></i></td>
+                <td><i class="far fa-traffic-light @if(!is_null($estimation->invoice)) green-circle @else red-circle @endif"></i></td>
             </tr>
             @endforeach
             </tbody>

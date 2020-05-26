@@ -4,7 +4,7 @@
 namespace App\Repository;
 
 
-use App\Contact;
+use App\Http\Entity\Contact;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 

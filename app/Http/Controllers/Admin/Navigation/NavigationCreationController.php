@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Navigation;
 
 
 use App\Http\Controllers\Controller;
-use App\Navigation;
+use App\Http\Entity\Navigation;
 use Illuminate\View\View;
 
 class NavigationCreationController extends Controller

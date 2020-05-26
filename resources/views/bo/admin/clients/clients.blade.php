@@ -45,10 +45,6 @@
                             <a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a>
                         </td>
                         <td><a href="{{route('showEstimations', $client->id)}}"><i class="fas fa-plus add-estimation-ico"></i></a></td>
-{{--                        <td class="mout-cliens-more-actions" data-target="options-{{$client->id}}"><i class="fas fa-ellipsis-v"></i>--}}
-{{--                            <div class="test" id="options-{{$client->id}}">{{$client->name}}</div>--}}
-{{--                        </td>--}}
-{{--                        <td data-slug="{{$client->slug}}"><a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a></td>--}}
                     </tr>
                 @endforeach
             @else
@@ -58,5 +54,9 @@
             @endif
             </tbody>
         </table>
+
+        <div class="bo-mout-pagination">
+            {{$clients->links()}}
+        </div>
     </div>
 @endsection

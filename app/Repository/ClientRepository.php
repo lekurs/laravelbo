@@ -4,10 +4,8 @@
 namespace App\Repository;
 
 
-use App\Client;
-use App\Contact;
-use App\Estimation;
-use Illuminate\Database\Eloquent\Builder;
+use App\Http\Entity\Client;
+use App\Http\Entity\Contact;
 use Illuminate\Support\Str;
 
 class ClientRepository

@@ -3,7 +3,7 @@ $mout-font: "AristaProAlternate";
 $mout-font-bold: "AristaProAlternateFat";
 $mout-font-extra-light: "AristaProAlternateHairline";
 $mout-font-light: "AristaProAlternateLight";
-$bo-font-awesome: "Font Awesome 5 Free";
+$bo-font-awesome: "Font Awesome 5 Pro";
 $bo-white-color: #ffffff;
 $bo-black-color: #000000;
 $bo-hover-color: #259dab;
@@ -361,6 +361,10 @@ div.mout-left-panel {
             position: relative;
             border-top: 1px solid #eaecf0;
             background-color: #f6f7f8;
+              &.slide {
+                  display: block;
+
+              }
 
             & > li {
               margin-left: 21px;
@@ -612,6 +616,7 @@ div.mout-client-card-container {
 
     & div.mout-client-card-right-content {
         width: 45%;
+        height: 100%;
         padding: 20px;
         display: grid;
         grid-row-gap: 30px;
@@ -620,8 +625,8 @@ div.mout-client-card-container {
 
         & div.mout-client-card-right-informations-container {
             display: grid;
-            grid-template-rows: 90px 40px 60px;
-            width: 50%;
+            grid-template-rows: 115px 40px 60px;
+            width: 80%;
             justify-self: center;
             text-align: center;
             -webkit-box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
@@ -631,6 +636,9 @@ div.mout-client-card-container {
             & p:nth-of-type(1) {
                 font-size: 40px;
                 color: $bo-white-color;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             & p.mout-client-card-title {
@@ -664,7 +672,7 @@ div.mout-client-card-container {
             & p#mout-client-total-ca {
                 background: #03DBC2;
                 grid-row: 1 / -1;
-                height: 160px;
+                height: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -674,132 +682,17 @@ div.mout-client-card-container {
                 grid-column: 1 / -1;
                 display: grid;
                 grid-template-columns: 160px auto;
-                grid-template-rows: 160px;
+                grid-template-rows: 150px;
+                width: 90%;
+            }
+
+            & p#mout-client-total-ca-price {
+                grid-row: 1 / -1;
             }
         }
     }
 }
 // !!Client Page!! //
-
-//Estimation Page //
-div.mout-admin-estimation-container {
-    font-family: $mout-font;
-}
-div.mout-estimation-header-container,
-div.mout-estimation-footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    & h3#mout-estimation-number {
-        margin: 2em 0 1em;
-        font-family: $mout-font-extra-light;
-        font-size: 30px;
-        position: relative;
-        width: 33%;
-
-        & span.mout-estimation-number {
-            font-family: $mout-font;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: -2px;
-            width: 100%;
-            height: 3px;
-            background: #ffed3b;
-        }
-    }
-
-    & p#mout-estimation-date {
-        margin: 2em 0 1em;
-        font-family: $mout-font-extra-light;
-        width: 33%;
-        font-size: 20px;
-
-    }
-}
-
-H4.mout-estimation-client-name {
-    text-transform: uppercase;
-    font-size: 20px;
-}
-
-p.mout-estimation-contact-informations {
-    font-family: $mout-font-light;
-    margin-bottom: 0;
-}
-
-H4.mout-estimation-description-title {
-    margin-top: 3em;
-    font-family: $mout-font;
-    font-size: 20px;
-    position: relative;
-
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: -2px;
-        width: 100%;
-        height: 2px;
-        background: #ffed3b;
-    }
-}
-
-p.mout-estimation-description-body {
-    margin-top: 1.5em;
-}
-
-p#mout-estimation-blank {
-    position: relative;
-    line-height: 2em;
-
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: -2px;
-        width: 100%;
-        height: 2px;
-        background: #ffed3b;
-    }
-}
-
-div.mout-estimation-footer-container {
-    align-items: flex-start;
-    margin-top: 2em;
-    font-family: $mout-font-light;
-    font-size: 18px;
-
-    & div.mout-estimation-bill-container {
-        display: flex;
-        justify-content: flex-end;
-        font-family: $mout-font;
-        font-size: 20px;
-
-        & div.mout-estimation-bill-content-details {
-            margin-right: 3em;
-
-            & p {
-                text-transform: uppercase;
-                margin-bottom: 0;
-                text-align: right;
-            }
-        }
-
-        & div.mout-estimation-bill-content-price {
-            & p {
-                margin-bottom: 0;
-                text-align: right;
-            }
-        }
-    }
-}
-
-// !!Estimation Page!! //
 
 // General //
 i.green-circle {
@@ -820,6 +713,24 @@ div.mout-admin-right-panel {
     width: calc(50% - 50px);
     float: right;
 }
+
+//Pagination //
+div.bo-mout-pagination {
+    margin: 2em 1em 0;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.page-item.active .page-link {
+    background-color: #259dab !important;
+    border-color: #259dab !important;
+    color: $bo-white-color !important;
+}
+
+.page-link {
+    color: $bo-black-color !important;
+}
+// !!Pagination!! //
 // !!General!! //
 
 

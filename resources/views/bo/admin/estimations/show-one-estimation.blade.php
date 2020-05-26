@@ -1,6 +1,6 @@
 @extends('admin-layout')
 
-@section('title', 'Devis {{$estimation->number}}')
+@section('title', 'Devis '. $estimation->number )
 
 @section('body')
     <h2 class="admin-title">Devis réf : {{$estimation->number}}</h2>
@@ -23,7 +23,7 @@
             <div class="mout-estimation-description">
                 <h4 class="mout-estimation-description-title">Description</h4>
                 <p class="mout-estimation-description-body">
-                    {{$estimation->body}}
+                    {!! $estimation->body !!}
                 </p>
                 <p id="mout-estimation-blank">&nbsp;</p>
             </div>
@@ -44,9 +44,31 @@
                     </div>
                 </div>
             </div>
-            <a href="{{route('createPDFEstimation', $estimation->id)}}" class="btn btn-dark btn-mout">Enregistrer en pdf</a>
         </div>
-        <div class="mout-admin-right-panel"></div>
+        <div class="mout-admin-right-panel">
+            <h3 class="mout-admin-title">Actions</h3>
+            <div class="mout-admin-estimation-right-panel">
+            <p>Devis validé ?</p>
+            <label class="switch">
+                <input type="checkbox" class="update-estim" @if($estimation->validation == 1) checked @endif>
+                <span class="slider round" data-id="{{$estimation->id}}"></span>
+            </label>
+            </div>
+            <div id="estimation-action-2">
+                <a href="{{route('createPDFEstimation', $estimation->id)}}" target="_blank" class="btn btn-dark btn-mout">Voir le pdf</a>
+            </div>
+            <div id="estimation-action-3">
+                @if(!is_null($estimation->invoices) && $estimation->validation == 1)
+                <a href="{{route('createInvoice', $estimation->id)}}" class="btn btn-mout btn-dark">Faire la facture</a>
+                @else
+                    <a href="#" class="btn btn-mout btn-dark">Voir la facture</a>
+                @endif
+            </div>
+        </div>
     </div>
 
+@endsection
+
+@section('js')
+    <script src="{{asset('js/admin/bo-mout-valide-estimation.js')}}"></script>
 @endsection

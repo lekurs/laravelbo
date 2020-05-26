@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Http\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,10 +17,6 @@ class Client extends Model
         'slug'
     ];
 
-    /**
-     * O2M Contacts
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class, 'client_id');
@@ -39,5 +35,10 @@ class Client extends Model
     public function estimationsByOrder(): HasMany
     {
         return $this->hasMany(Estimation::class, 'client_id')->orderBy('created_at', 'asc');
+    }
+
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class, 'client_id');
     }
 }
