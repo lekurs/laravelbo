@@ -14,5 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'admin/clients/contact/show',
         'admin/menus/save',
+        'admin/uploader'
     ];
 }

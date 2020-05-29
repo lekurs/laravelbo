@@ -57,13 +57,16 @@
             <div id="estimation-action-2">
                 <a href="{{route('createPDFEstimation', $estimation->id)}}" target="_blank" class="btn btn-dark btn-mout">Voir le pdf</a>
             </div>
-            <div id="estimation-action-3">
-                @if(!is_null($estimation->invoices) && $estimation->validation == 1)
-                <a href="{{route('createInvoice', $estimation->id)}}" class="btn btn-mout btn-dark">Faire la facture</a>
-                @else
-                    <a href="#" class="btn btn-mout btn-dark">Voir la facture</a>
-                @endif
+            <div id="estimation-action-3" @if($estimation->validation === 1) class="estimation-action-active" @endif>
+                <a href="{{route('createDownPaiementInvoice', $estimation->id)}}" class="btn btn-mout btn-dark">Créer une facture d'acompte</a>
+                <a href="{{route('createInvoice', $estimation->id)}}" class="btn btn-mout btn-dark">Créer la facture</a>
             </div>
+            @if(!is_null($estimation->invoices))
+            <div id="estimation-action-4">
+                <a href="#" class="btn btn-mout btn-dark">Voir la facture</a>
+            </div>
+            @endif
+
         </div>
     </div>
 

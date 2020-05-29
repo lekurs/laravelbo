@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-grid.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-reboot.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/content-tools.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content-tools/content-tools.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content-tools/sandbox.css')}}">
     <link rel="stylesheet" href="{{asset('css/nestable.css')}}">
 
     {{-- /vendors--}}
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Fat.css')}}">
 
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,700" rel="stylesheet">
-    <script defer src="https://kit.fontawesome.com/dd86c136c7.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/dd86c136c7.js" crossorigin="anonymous"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

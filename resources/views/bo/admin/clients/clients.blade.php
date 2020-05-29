@@ -39,17 +39,12 @@
                         <td>{{$client->address}}</td>
                         <td>{{$client->zip}}</td>
                         <td>{{$client->city}}</td>
-<<<<<<< HEAD:resources/views/bo/admin/clients.blade.php
-                        <td data-slug="{{$client->slug}}"><i class="fas fa-edit"></i></td>
-                        <td data-slug="{{$client->slug}}"><a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a></td>
-=======
                         <td data-slug="{{$client->id}}">
                             <a href="{{route('showOne', $client->slug)}}"><i class="fas fa-eye"></i></a>
                             <a href="{{route('editOne', $client->slug)}}"><i class="fas fa-edit edit-ico"></i></a>
                             <a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a>
                         </td>
                         <td><a href="{{route('showEstimations', $client->id)}}"><i class="fas fa-plus add-estimation-ico"></i></a></td>
->>>>>>> 807fc22d83c485a1a0f1cf8ec61de460cbbe4610:resources/views/bo/admin/clients/clients.blade.php
                     </tr>
                 @endforeach
             @else

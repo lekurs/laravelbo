@@ -32,16 +32,16 @@
                 <p>{{$sumInvoiceOnMonth}} €</p>
             </div>
 
-            <div class="mout-client-card-right-informations-container">
+            <div class="mout-client-card-right-informations-container" id="estimations">
                 <p id="mout-client-estimations"><i class="far far fa-file"></i></p>
                 <p class="mout-client-card-title">Devis</p>
-                <p>{{count($client->estimations)}}</p>
+                <p id="mout-estimation-count">{{count($client->estimations)}}</p>
             </div>
 
-            <div class="mout-client-card-right-informations-container">
+            <div class="mout-client-card-right-informations-container" id="invoices">
                 <p id="mout-client-bills"><i class="fas fa-file-invoice-dollar"></i></p>
                 <p class="mout-client-card-title">Factures</p>
-                <p>{{$totalInvoices}}</p>
+                <p id="mout-invoice-container">{{$totalInvoices}}</p>
             </div>
 
             <div class="mout-client-card-right-informations-container">
@@ -54,29 +54,93 @@
     </div>
 
     <div class="mout-estimations-container">
-        <table class="table-striped table-hover mout-bo-table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Intitulé</th>
-                <th>Prix</th>
-                <th>Date</th>
-                <th>Validé</th>
-                <th>Facturé</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($client->estimationsByOrder as $estimation)
-            <tr>
-                <td>{{$estimation->number}}</td>
-                <td><a href="{{route('showOneEstimation', $estimation->id)}}" >{{$estimation->title}}</a></td>
-                <td>{{$estimation->price}}</td>
-                <td>{{$estimation->created_at->format('d/m/Y')}}</td>
-                <td><i class="fas fa-circle @if($estimation->validation === 1) green-circle @else red-circle @endif"></i></td>
-                <td><i class="far fa-traffic-light @if(!is_null($estimation->invoice)) green-circle @else red-circle @endif"></i></td>
-            </tr>
-            @endforeach
-            </tbody>
-        </table>
+        <div id="estimation-table-container">
+            <table class="table-striped table-hover mout-bo-table" id="estimation-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Intitulé</th>
+                    <th>Prix</th>
+                    <th>Date</th>
+                    <th>Validé</th>
+                    <th>Facturé</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($client->estimationsByOrder as $estimation)
+                <tr>
+                    <td>{{$estimation->number}}</td>
+                    <td><a href="{{route('showOneEstimation', $estimation->id)}}" >{{$estimation->title}}</a></td>
+                    <td>{{$estimation->price}}</td>
+                    <td>{{$estimation->created_at->format('d/m/Y')}}</td>
+                    <td><i class="fas fa-circle @if($estimation->validation === 1) green-circle @else red-circle @endif"></i></td>
+                    <td><i class="@if($estimation->invoice) fal fa-thumbs-up @else fal fa-thumbs-down @endif"></i></td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div id="invoice-table-container">
+            <table class="table-striped table-hover mout-bo-table" id="invoice-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Intitulé</th>
+                    <th>Prix</th>
+                    <th>Date</th>
+                    <th>Acompte</th>
+                    <th>Réglée</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($client->invoices as $invoice)
+                    <tr>
+                        <td>{{$invoice->number}}</td>
+                        <td><a href="{{route('showOneEstimation', $estimation->id)}}" >{{$invoice->title}}</a></td>
+                        <td>{{$invoice->amount}}</td>
+                        <td>{{$invoice->created_at->format('d/m/Y')}}</td>
+                        <td><i class="fas fa-circle @if($invoice->validation === 1) green-circle @else red-circle @endif"></i></td>
+                        <td><i class="@if($invoice->paid) fal fa-thumbs-up @else fal fa-thumbs-down @endif"></i></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
+@endsection
+
+@section('js')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const estimation = $('.mout-client-card-right-informations-container#estimations');
+            const invoice = $('.mout-client-card-right-informations-container#invoices');
+            const estimationTable = $('#estimation-table-container');
+            const invoiceTable = $('#invoice-table-container');
+
+            $(estimation).click(function () {
+                if ($(invoiceTable).hasClass('active')) {
+                    $(invoiceTable).removeClass('active');
+                }
+
+                $(estimationTable).toggleClass('active');
+            })
+
+            $(invoice).click(function () {
+                if($(estimationTable).hasClass('active')) {
+                    $(estimationTable).removeClass('active');
+                }
+                $(invoiceTable).toggleClass('active');
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready( function () {
+            $('#estimation-table').DataTable();
+            $('#invoice-table').DataTable();
+        } );
+    </script>
 @endsection

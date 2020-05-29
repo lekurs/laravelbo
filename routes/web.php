@@ -41,11 +41,6 @@ Route::get('/test/seeders', function () {
 //Administration
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
-<<<<<<< HEAD
-    Route::any('/clients', 'Admin\Clients\ClientsController@showAll')->name('showClients');
-    Route::any('/clients/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
-//    Route::get('/clients/add', 'Admin\Clients\ClientsController@add')->name('addClient');
-=======
 
     //Menus
     Route::group(['prefix' => 'menus'], function () {
@@ -73,6 +68,7 @@ Route::prefix('admin')->group(function () {
 
     //Estimations
     Route::group(['prefix' => 'devis'], function () {
+        Route::get('/', 'Admin\Estimations\EstimationGetAllController@getAll')->name('showAllEstimations');
         Route::get('/client/{idClient}', 'Admin\Estimations\EstimationController@show')->name('showEstimations');
         Route::get('/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
         Route::get('/{id}/pdf', 'Admin\Estimations\EstimationPDFController@create')->name('createPDFEstimation');
@@ -83,8 +79,17 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'facture'], function () {
        Route::get('/{id}', 'Admin\Invoices\InvoiceCreationController@create')->name('createInvoice');
        Route::post('/{id}/add', 'Admin\Invoices\InvoiceSaveController@save')->name('saveInvoice');
+
+       //Acompte
+        Route::group(['prefix' => 'acompte'], function () {
+            Route::get('/{idEstimation}', 'Admin\DownPaiementInvoices\DownPaiementInvoiceCreationController@show')->name('createDownPaiementInvoice');
+            Route::post('/{idEstimation}/add', 'Admin\DownPaiementInvoices\DownPaiementInvoiceSaveController@save')->name('saveDownPaiementInvoice');
+        });
     });
->>>>>>> 807fc22d83c485a1a0f1cf8ec61de460cbbe4610
+
+    Route::group(['prefix' => 'uploader'], function () {
+       Route::post('/', 'Admin\Uploader\UploaderImageController@uploadImg')->name('uploaderImg');
+    });
 });
 
 //Exemple avec un controller
