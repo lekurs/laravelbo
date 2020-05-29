@@ -92,15 +92,3 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-//Exemple avec un controller
-//Route::get('/user', 'UserController@index');
-
-//Nommage d'une route
-//Route::get('user/profile', 'UserProfileController@show')->name('profile');
-
-
-//Exemple avec un controller et des classes
-//Route::get('/user', 'UserController@index', function (\App\User $user) {
-//
-//});
-

@@ -11,6 +11,26 @@ $(document).ready(function () {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        }).done(function (data) {
+                if (data) {
+                    $('div#estimation-action-3').addClass('estimation-action-active');
+                } else {
+                    $('div#estimation-action-3').removeClass('estimation-action-active');
+                }
+        }).fail(function (data) {
+            console.log(data + 'test ?');
         });
     });
 });
+
+
+// $.ajax( "example.php" )
+//     .done(function() {
+//         alert( "success" );
+//     })
+//     .fail(function() {
+//         alert( "error" );
+//     })
+//     .always(function() {
+//         alert( "complete" );
+//     });

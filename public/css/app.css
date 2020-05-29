@@ -1221,6 +1221,26 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+div.mout-client-card-right-informations-container {
+  cursor: pointer;
+}
+
+div#estimation-table-container {
+  display: none;
+}
+
+div#estimation-table-container.active {
+  display: block;
+}
+
+div#invoice-table-container {
+  display: none;
+}
+
+div#invoice-table-container.active {
+  display: block;
+}
+
 div.mout-admin-estimation-container {
   font-family: "AristaProAlternate";
 }
@@ -1245,6 +1265,14 @@ div.mout-admin-estimation-right-panel label {
 
 div#estimation-action-2 {
   margin: 1em 0;
+}
+
+div#estimation-action-3 {
+  display: none;
+}
+
+div#estimation-action-3.estimation-action-active {
+  display: block;
 }
 
 div.mout-estimation-header-container,
@@ -1360,6 +1388,12 @@ div.mout-estimation-footer-container div.mout-estimation-bill-container div.mout
 div.mout-estimation-footer-container div.mout-estimation-bill-container div.mout-estimation-bill-content-price p {
   margin-bottom: 0;
   text-align: right;
+}
+
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable.no-footer {
+  border-bottom: 0px !important;
 }
 
 

@@ -5,13 +5,18 @@ namespace App\Repository;
 
 use App\Http\Entity\Contact;
 use App\Http\Entity\Estimation;
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class EstimationRepository
 {
     public function getOne($id): Estimation
     {
         return Estimation::find($id);
+    }
+
+    public function getAll(): Collection
+    {
+        return Estimation::all();
     }
 
     public function totalByMonth($clientId)
