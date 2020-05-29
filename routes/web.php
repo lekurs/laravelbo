@@ -31,6 +31,7 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
     Route::any('/clients', 'Admin\Clients\ClientsController@showAll')->name('showClients');
+    Route::any('/clients/del/{slug}', 'Admin\Clients\ClientsController@deleteOne')->name('deleteClient');
 //    Route::get('/clients/add', 'Admin\Clients\ClientsController@add')->name('addClient');
 });
 

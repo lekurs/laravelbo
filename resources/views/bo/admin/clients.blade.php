@@ -35,6 +35,7 @@
                         <td>{{$client->zip}}</td>
                         <td>{{$client->city}}</td>
                         <td data-slug="{{$client->slug}}"><i class="fas fa-edit"></i></td>
+                        <td data-slug="{{$client->slug}}"><a href="{{route('deleteClient', $client->slug)}}"><i class="fas fa-trash"></i></a></td>
                     </tr>
                 @endforeach
             @else
