@@ -1,0 +1,142 @@
+//Estimation Page //
+div.mout-admin-estimation-container {
+    font-family: $mout-font;
+}
+
+div.mout-admin-estimation-right-panel {
+    display: flex;
+    align-items: center;
+
+    & > p {
+        font-family: $bo-font;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 700;
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+
+    & label {
+        margin-bottom: 0;
+    }
+}
+
+div#estimation-action-2 {
+    margin: 1em 0;
+}
+
+div.mout-estimation-header-container,
+div.mout-estimation-footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & h3#mout-estimation-number {
+        margin: 2em 0 1em;
+        font-family: $mout-font-extra-light;
+        font-size: 30px;
+        position: relative;
+        width: 33%;
+
+        & span.mout-estimation-number {
+            font-family: $mout-font;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: -2px;
+            width: 100%;
+            height: 3px;
+            background: #ffed3b;
+        }
+    }
+
+    & p#mout-estimation-date {
+        margin: 2em 0 1em;
+        font-family: $mout-font-extra-light;
+        width: 33%;
+        font-size: 20px;
+
+    }
+}
+
+H4.mout-estimation-client-name {
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+p.mout-estimation-contact-informations {
+    font-family: $mout-font-light;
+    margin-bottom: 0;
+}
+
+H4.mout-estimation-description-title {
+    margin-top: 3em;
+    font-family: $mout-font;
+    font-size: 20px;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: -2px;
+        width: 100%;
+        height: 2px;
+        background: #ffed3b;
+    }
+}
+
+p.mout-estimation-description-body {
+    margin-top: 1.5em;
+}
+
+p#mout-estimation-blank {
+    position: relative;
+    line-height: 2em;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: -2px;
+        width: 100%;
+        height: 2px;
+        background: #ffed3b;
+    }
+}
+
+div.mout-estimation-footer-container {
+    align-items: flex-start;
+    margin-top: 2em;
+    font-family: $mout-font-light;
+    font-size: 18px;
+
+    & div.mout-estimation-bill-container {
+        display: flex;
+        justify-content: flex-end;
+        font-family: $mout-font;
+        font-size: 20px;
+
+        & div.mout-estimation-bill-content-details {
+            margin-right: 3em;
+
+            & p {
+                text-transform: uppercase;
+                margin-bottom: 0;
+                text-align: right;
+            }
+        }
+
+        & div.mout-estimation-bill-content-price {
+            & p {
+                margin-bottom: 0;
+                text-align: right;
+            }
+        }
+    }
+}
+
+// !!Estimation Page!! //

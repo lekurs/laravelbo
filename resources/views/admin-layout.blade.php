@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <title>Resolving - @yield('title')</title>
     @yield('styles')
+    <link rel="stylesheet" href="{{mix('css/app.css')}}">
+    {{-- /vendors--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-grid.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-reboot.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content-tools.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/nestable.css')}}">
+
+    {{-- /vendors--}}
+    <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Regular.css')}}">
+    <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Hairline.css')}}">
+    <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Light.css')}}">
+    <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Fat.css')}}">
+
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/mout-global.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mout-backoffice.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mout-forms.css') }}">
-{{--    Bootstrap ?--}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script defer src="https://kit.fontawesome.com/dd86c136c7.js" crossorigin="anonymous"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @section('meta')
+    @yield('meta')
     <meta name="description" content="description du site" />
-    @endsection
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @section('social')
     <!-- Création des metatags réseaux sociaux -->
@@ -102,7 +106,7 @@
             </div>
             <!-- TAB PANEL TOP -->
                 @include('bo.nav._tab-panel-top')
-        <!-- /TAB PANEL TOP -->
+            <!-- /TAB PANEL TOP -->
 
             <!-- TAB PANEL BOT -->
             <div class="mout-tab-content">
@@ -120,12 +124,17 @@
         </div>
     </div>
 </section>
+<script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+<script src="{{asset('js/admin/bo-mout-nav-bar.js')}}"></script>
 @yield('js')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="{{asset('js/app.js')}}"></script>
-<script src="{{ asset('js/bo-mout-nav-bar.js') }}"></script>
-<script src="{{ asset('js/bo-edit-filters.js') }}"></script>
+
 </body>
 </html>

@@ -1,4 +1,10 @@
 {
+    "/css/app.css": "/css/app.css",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/autocomplete.js": "/autocomplete.js",
+    "/bocontact.js": "/bocontact.js",
+    "/navigation-manager-nestable.js": "/navigation-manager-nestable.js",
+    "/navigation.js": "/navigation.js",
+    "/wysiwyg-upload-img.js": "/wysiwyg-upload-img.js",
+    "/wysiwyg.js": "/wysiwyg.js"
 }

@@ -3,9 +3,10 @@
 
 namespace App\Http\Controllers\Admin\Clients;
 
-use App\Client;
-use App\Helper\Slugify;
+use App\Http\Entity\Client;
 use \App\Http\Controllers\Controller;
+use App\Http\Requests\Clients\ClientEdit;
+use App\Repository\ClientRepository;
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -15,7 +16,7 @@ class ClientsController extends Controller
 {
     public function showAll(Request $request)
     {
-        $clients = Client::all();
+        $clients = Client::paginate(15);
 
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
@@ -42,10 +43,19 @@ class ClientsController extends Controller
 
             return back()->with('success', 'Client ajouté');
         }
-
-        return view('bo.admin.clients', [
+        return view('bo.admin.clients.clients', [
             'clients' => $clients,
         ]);
+    }
+
+
+    public function editBySlug(Request $request, ClientRepository $clientRepository, ClientEdit $clientEdit, $slug)
+    {
+        $validates = $clientEdit->all();
+
+        $clientRepository->editBySlug($validates, $slug);
+
+        return back()->with('success', 'Client mis à jour');
     }
 
     public function deleteOne(Request $request, $slug)
