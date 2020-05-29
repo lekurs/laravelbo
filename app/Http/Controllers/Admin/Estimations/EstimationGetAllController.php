@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin\Estimations;
 
 use App\Http\Controllers\Controller;
 use App\Repository\EstimationRepository;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class EstimationGetAllController extends Controller
@@ -14,8 +15,11 @@ class EstimationGetAllController extends Controller
     {
         $estimations = $repository->getAll();
 
+        $test = Storage::get('images/uploads/alphabet-capitales.jpg');
+
         return view('bo.admin.estimations.show-estimations', [
-            'estimations' => $estimations
+            'estimations' => $estimations,
+            'test' =>$test
         ]);
     }
 }

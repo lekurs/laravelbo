@@ -25,6 +25,14 @@ div#estimation-action-2 {
     margin: 1em 0;
 }
 
+div#estimation-action-3 {
+    display: none;
+
+    &.estimation-action-active {
+        display: block;
+    }
+}
+
 div.mout-estimation-header-container,
 div.mout-estimation-footer-container {
     display: flex;

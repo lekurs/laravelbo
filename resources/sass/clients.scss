@@ -1,0 +1,19 @@
+div.mout-client-card-right-informations-container {
+    cursor: pointer;
+}
+
+div#estimation-table-container {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+div#invoice-table-container {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
