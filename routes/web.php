@@ -89,6 +89,8 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['prefix' => 'uploader'], function () {
        Route::post('/', 'Admin\Uploader\UploaderImageController@uploadImg')->name('uploaderImg');
+       Route::post('/rotate', 'Admin\Uploader\UploaderImageController@rotateImg')->name('rotateImg');
+       Route::post('/save', 'Admin\Uploader\UploaderImageController@saveImg')->name('saveImg');
     });
 });
 
