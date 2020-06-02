@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Http\Entity\Client;
 use App\Http\Entity\Contact;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
 class ClientRepository
@@ -31,6 +32,18 @@ class ClientRepository
         $contact->slug = Str::slug($contactsData['contact-name']);
 
         $client->contacts()->save($contact);
+    }
+
+    public function getAllWithEstimationsValidate(): Collection
+    {
+        return Client::with('estimationsIsActive')->get();
+    }
+
+    public function getAllWithEstimationsValidateAndInvoicesInProgressOnMonth(): Collection
+    {
+//        return Invoice::whereBetween('created_at', [$from, $to])->where('client_id', '=', $clientId)->sum('amount');
+
+        return Client::with('estimationsIsActive')->with('invoicesNotPaid')->get();
     }
 
     public function getOneBySlug(string $slug): Client

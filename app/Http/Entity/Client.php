@@ -41,4 +41,9 @@ class Client extends Model
     {
         return $this->hasMany(Invoice::class, 'client_id');
     }
+
+    public function invoicesNotPaid(): HasMany
+    {
+        return $this->hasMany(Invoice::class, 'client_id')->notPaid();
+    }
 }

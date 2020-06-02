@@ -4,4 +4,5 @@
 
 @section('body')
 <p>lorem ipsum</p>
+    <div id="chart_div"></div>
 @endsection

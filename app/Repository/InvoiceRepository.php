@@ -34,6 +34,11 @@ class InvoiceRepository implements InvoiceRepositoryInterface
             ->sum('amount');
     }
 
+    public function countNotPaid(): int
+    {
+        return Invoice::wherePaid(false)->count();
+    }
+
     public function save(array $datas, Estimation $estimation): void
     {
         $invoice = new Invoice();

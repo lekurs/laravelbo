@@ -48,6 +48,11 @@ Route::prefix('admin')->group(function () {
         Route::post('/save', 'Admin\Navigation\NavigationSaveController@save')->name('saveNavigation');
     });
 
+    //Dashboard
+    Route::group(['prefix' => 'dashboard'], function () {
+       Route::get('/', 'Admin\Dashboard\DashboardController@show')->name('dashboard');
+    });
+
     //Clients
     Route::group(['prefix' => 'clients'], function () {
             Route::get('/', 'Admin\Clients\ClientsController@showAll')->name('showClients');

@@ -19,7 +19,7 @@ class EstimationRepository
         return Estimation::all();
     }
 
-    public function totalByMonth($clientId)
+    public function totalByMonth($clientId): string
     {
         $from = new \DateTime('first day of this month');
         $to = new \DateTime('last day of this month');
@@ -27,10 +27,20 @@ class EstimationRepository
         return Estimation::whereBetween('created_at', [$from, $to])->where('client_id', '=', $clientId)->sum('price');
     }
 
-    public function totalByClient($idClient)
+    public function totalByClient($idClient): string
     {
         return Estimation::where('client_id', '=',  $idClient)
             ->sum('price');
+    }
+
+    public function sumValidate(): string
+    {
+        return Estimation::whereValidation(true)->sum('price');
+    }
+
+    public function countValidate(): int
+    {
+        return Estimation::whereValidation(true)->count();
     }
 
     public function updateValidation(int $id): void
