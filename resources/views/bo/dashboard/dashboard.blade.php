@@ -121,6 +121,7 @@
                 height: 500,
                 colors: ["#03DBC2", "#7A63F9"],
                 legend: { position: 'bottom', alignment: 'start' },
+                pieSliceText: 'label',
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('chart_estimation_invoice'));
