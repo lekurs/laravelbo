@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Entity\Client;
+use App\Http\Entity\Invoice;
 use Illuminate\Database\Seeder;
 
-class ClientSeeder extends Seeder
+class InvoicenSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class ClientSeeder extends Seeder
     public function run()
     {
         //create => sauvegarde en bdd / make => crée à la volée sans save en bdd
-        factory(Client::class, 20)->create();
+        factory(Invoice::class, 100)->create();
     }
 }

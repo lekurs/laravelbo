@@ -23,12 +23,14 @@ class CreateEstimationsTable extends Migration
             $table->integer('client_id')->unsigned();
             $table->integer('contact_id')->unsigned();
             $table->integer('invoice_id')->unsigned()->nullable();
+            $table->integer('client_category_id')->unsigned();
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')
                 ->onDelete('cascade');
             $table->foreign('contact_id')->references('id')->on('contacts')
                 ->onDelete('cascade');
             $table->foreign('invoice_id')->references('id')->on('invoices');
+            $table->foreign('client_category_id')->references('id')->on('client_categories');
         });
     }
 

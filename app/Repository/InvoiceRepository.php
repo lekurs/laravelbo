@@ -7,6 +7,8 @@ namespace App\Repository;
 use App\Http\Entity\Estimation;
 use App\Http\Entity\Invoice;
 use App\Repository\interfaces\InvoiceRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceRepository implements InvoiceRepositoryInterface
 {
@@ -37,6 +39,23 @@ class InvoiceRepository implements InvoiceRepositoryInterface
     public function countNotPaid(): int
     {
         return Invoice::wherePaid(false)->count();
+    }
+
+    public function getAllByMonth(): Collection
+    {
+        return Invoice::orderBy('created_at', 'ASC')->wherePaid(true)->get();
+    }
+
+    public function getAllWithCA(): \Illuminate\Support\Collection
+    {
+        $date = date('Y');
+        return
+        DB::table('invoices')
+            ->select(DB::raw('DATE_FORMAT(invoices.created_at, "%m") as month,  sum(invoices.amount) as ca, client_category_id'))
+            ->join('estimations', 'invoices.id', '=', 'invoice_id')
+            ->whereRaw('DATE_FORMAT(invoices.created_at, "%Y") = ' . $date . '')
+            ->groupBy(DB::raw('DATE_FORMAT(invoices.created_at, "%m"), client_category_id'))
+            ->get();
     }
 
     public function save(array $datas, Estimation $estimation): void

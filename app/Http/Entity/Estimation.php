@@ -32,6 +32,11 @@ class Estimation extends Model
         return $this->belongsTo(Invoice::class, 'invoice_id');
     }
 
+    public function clientCategory(): BelongsTo
+    {
+        return $this->belongsTo(ClientCategory::class, 'client_category_id');
+    }
+
     public function downPaiementInvoice(): BelongsTo
     {
         return $this->belongsTo(DownPaiementInvoice::class, 'down_paiement_invoice_id');

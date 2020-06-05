@@ -41,15 +41,12 @@ class ClientRepository
 
     public function getAllWithEstimationsValidateAndInvoicesInProgressOnMonth(): Collection
     {
-//        return Invoice::whereBetween('created_at', [$from, $to])->where('client_id', '=', $clientId)->sum('amount');
-
         return Client::with('estimationsIsActive')->with('invoicesNotPaid')->get();
     }
 
     public function getOneBySlug(string $slug): Client
     {
         return Client::whereSlug($slug)->first();
-
     }
 
     public function getOneBySlugWithEstimations(string $slug): Client
@@ -57,7 +54,6 @@ class ClientRepository
         return Client::whereSlug($slug)
             ->with('estimationsByOrder')
             ->first();
-
     }
 
     public function getOneBySlugEstimationActive(string $slug): Client

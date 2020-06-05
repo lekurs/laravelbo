@@ -16,11 +16,19 @@ class DashboardController extends Controller
     {
         $datas = $clientRepository->getAllWithEstimationsValidate();
 
-//        $clients = $clientRepository->getAllWithEstimationsValidateAndInvoicesInProgressOnMonth();
-
         $estimations = $estimationRepository->countValidate();
 
         $invoices = $invoiceRepository->countNotPaid();
+
+//        $estimationsWithInvoices = $estimationRepository->getAllInvoicesByType();
+//
+//        $tab = [];
+//
+//        foreach ($estimationsWithInvoices as $estimation) {
+//            foreach ($estimation->clientCategory()->get() as $cat) {
+//                $tab[] = $cat->type;
+//            }
+//        }
 
         $clientTab = [];
 
@@ -36,6 +44,7 @@ class DashboardController extends Controller
             'clientTab' => $clientTab,
             'totalEstimations' => $estimations,
             'totalInvoices' => $invoices,
+//            'estimationsWithInvoices' => $estimationsWithInvoices
         ]);
     }
 }

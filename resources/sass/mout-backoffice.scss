@@ -112,6 +112,13 @@ header {
                 border: 0;
                 padding-left: 5px;
                 padding-right: 5px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                  & img {
+                      margin-right: 10px;
+                  }
               }
             }
           }

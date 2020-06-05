@@ -16,6 +16,11 @@
             <input type="number" class="form-control" name="estimation-number" id="estimation-number">
         </div>
         <div class="form-group">
+            <label for="name" class="float-label">Type *</label>
+{{--            <select></select>--}}
+{{--            <input type="number" class="form-control" name="estimation-type" id="estimation-type">--}}
+        </div>
+        <div class="form-group">
             <label for="name" class="float-label">Intitulé du devis*</label>
             <input type="text" class="form-control" name="estimation-title" id="estimation-title">
         </div>

@@ -24,18 +24,23 @@ Route::post('/myform', 'FirstController@form');
 Route::get('/posts/show', 'FirstController@showAll')->name('showAllPosts');
 
 Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
+//
+//Route::get('/test/seeders/client', function () {
+//    return factory(\App\Http\Entity\Client::class, 50)->create();
+//});
+//
+//Route::get('/test/seeders/contact', function () {
+//    return factory(\App\Http\Entity\Contact::class, 50)->create();
+//});
+//
+//Route::get('/test/seeders', function () {
+//    return factory(\App\Http\Entity\Estimation::class, 50)->create();
+//});
+//
+//Route::get('/test/seeders/invoices', function () {
+//    return factory(\App\Http\Entity\Invoice::class, 50)->create();
+//});
 
-Route::get('/test/seeders/client', function () {
-    return factory(\App\Http\Entity\Client::class, 50)->create();
-});
-
-Route::get('/test/seeders/contact', function () {
-    return factory(\App\Http\Entity\Contact::class, 50)->create();
-});
-
-Route::get('/test/seeders', function () {
-    return factory(\App\Http\Entity\Estimation::class, 50)->create();
-});
 
 
 //Administration

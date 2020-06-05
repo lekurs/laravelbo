@@ -99,6 +99,13 @@ header div.mout-header-panel div.mout-header-bar div.header-bar-right ul.header-
   border: 0;
   padding-left: 5px;
   padding-right: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header div.mout-header-panel div.mout-header-bar div.header-bar-right ul.header-bar-right-menu li.header-bar-right-menu-list div.btn-group button.btn img {
+  margin-right: 10px;
 }
 
 header ul.drop-menu {

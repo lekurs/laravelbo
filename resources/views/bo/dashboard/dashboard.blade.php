@@ -65,6 +65,7 @@
     <div class="mout-admin-dashboard-charts-container">
         <div id="chart_div"></div>
         <div id="chart_estimation_invoice"></div>
+        <div id="curve_chart"></div>
 
     </div>
 @endsection
@@ -127,5 +128,30 @@
             var chart = new google.visualization.PieChart(document.getElementById('chart_estimation_invoice'));
             chart.draw(data, options);
         }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var jsonData = $.ajax({
+                url: "/api/charts-ca",
+                dataType: "json",
+                async: false
+            }).responseJSON;
+
+            const chartData = google.visualization.arrayToDataTable(jsonData);
+
+            var options = {
+                title: 'Chiffre d\'affaire MOUT',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(chartData, options);
+            }
     </script>
 @endsection

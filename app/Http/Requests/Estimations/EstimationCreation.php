@@ -19,7 +19,8 @@ class EstimationCreation extends FormRequest
           'estimation-number' => 'required|max:50',
           'estimation-title' => 'required|max:255',
           'estimation-body' => 'required',
-          'estimation-price' => 'required'
+          'estimation-price' => 'required',
+          'estimation-type' => 'required',
         ];
     }
 }
