@@ -16,6 +16,6 @@ class VerifyCsrfToken extends Middleware
         'admin/menus/save',
         'admin/uploader',
         'admin/uploader/rotate',
-        'admin/uploader/save'
+        'admin/uploader/save',
     ];
 }

@@ -51,10 +51,10 @@ class InvoiceRepository implements InvoiceRepositoryInterface
         $date = date('Y');
         return
         DB::table('invoices')
-            ->select(DB::raw('DATE_FORMAT(invoices.created_at, "%m") as month,  sum(invoices.amount) as ca, client_category_id'))
+            ->select(DB::raw('DATE_FORMAT(invoices.created_at, "%m") as month,  sum(invoices.amount) as ca, expertise_id'))
             ->join('estimations', 'invoices.id', '=', 'invoice_id')
             ->whereRaw('DATE_FORMAT(invoices.created_at, "%Y") = ' . $date . '')
-            ->groupBy(DB::raw('DATE_FORMAT(invoices.created_at, "%m"), client_category_id'))
+            ->groupBy(DB::raw('DATE_FORMAT(invoices.created_at, "%m"), expertise_id'))
             ->get();
     }
 

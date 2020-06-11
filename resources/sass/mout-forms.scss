@@ -2,13 +2,13 @@
 
 /** delete box shadow bootstrap **/
 .form-control:focus {
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 /** SPECIFICITES SITE EN COURS **/
 legend {
   font-family: "AristaProAlternateExtraLight";
-  color:#FFFFFF; /*couleur  label à changer si besoin*/
+  color:#707070; /*couleur  label à changer si besoin*/
   font-size:22px;
   font-weight:bold;
   margin-top: 2rem;
@@ -26,28 +26,28 @@ legend {
 
 .floating-input,
 .floating-select {
-  font-family: "Assistant";
+  font-family: $bo-font;
   font-weight: 200;
-  font-size:14px;
-  padding:4px 4px;
+  font-size:14px !important;
+  padding:4px 4px !important;
   display:block;
-  width:100%;
-  height:30px;
-  background-color: transparent;
-  border:none;
-  border-bottom:1px solid #757575;
-  border-radius: 0;
+  width:100% !important;
+  height:30px !important;
+  background-color: transparent !important;
+  border:none !important;
+  border-bottom:1px solid #757575 !important;
+  border-radius: 0 !important;
 
   &:focus {
     outline:none;
-    border-bottom:2px solid #ffec00;
+    border-bottom:2px solid #707070;
     background: transparent;
   }
 }
 
 label.float {
-  color:#FFFFFF;
-  font-family: "AristaProAlternateHairline";
+  color:#707070;
+  font-family: $mout-font;
   font-weight: 200;
   font-size:16px;
   position:absolute;
@@ -63,13 +63,13 @@ label.float {
 .floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
   top:-18px;
   font-size:14px;
-  color:#ffec00;
+  color:#343a40;
 }
 
 .floating-select:focus ~ label.float , .floating-select:not([value=""]):valid ~ label.float {
-  top:-18px;
-  font-size:14px;
-  color:#ffec00;
+  top:-18px !important;
+  font-size:14px !important;
+  color:#343a40 !important;
 }
 
 /* active state */

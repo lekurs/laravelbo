@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Client extends Model
 {
     protected $fillable = [
-       'name',
+        'name',
         'phone',
-       'address',
-       'zip',
-       'city',
-       'siren',
-        'slug'
+        'address',
+        'zip',
+        'city',
+        'siren',
+        'slug',
+        'logo'
     ];
 
     public function contacts(): HasMany

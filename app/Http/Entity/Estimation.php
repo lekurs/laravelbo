@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Estimation extends Model
 {
     protected $fillable = [
-        'number',
         'title',
         'body',
         'price',
@@ -32,9 +31,9 @@ class Estimation extends Model
         return $this->belongsTo(Invoice::class, 'invoice_id');
     }
 
-    public function clientCategory(): BelongsTo
+    public function Service(): BelongsTo
     {
-        return $this->belongsTo(ClientCategory::class, 'client_category_id');
+        return $this->belongsTo(Service::class, 'service_id');
     }
 
     public function downPaiementInvoice(): BelongsTo

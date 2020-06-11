@@ -5,10 +5,11 @@ namespace App\Http\Entity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class ClientCategory extends Model
+class Service extends Model
 {
     protected $fillable = [
-        'category'
+        'libelle',
+        'description'
     ];
 
     public function Estimations(): HasMany

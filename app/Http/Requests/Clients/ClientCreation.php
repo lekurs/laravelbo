@@ -30,6 +30,7 @@ class ClientCreation extends FormRequest
             'client-zip' => 'nullable|max:5',
             'client-city' => 'nullable|max:255',
             'client-phone' => 'nullable|max:10',
+            'client-logo' => 'nullable'
         ];
     }
 }

@@ -44,7 +44,7 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 
 
 //Administration
-Route::prefix('admin')->group(function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'Admin\AdminController@show')->name('admin');
 
     //Menus
@@ -107,4 +107,7 @@ Route::prefix('admin')->group(function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/auth/google', 'Auth\Google\GoogleController@login')->name('auth.google.login');
+Route::get('/auth/google/callback', 'Auth\Google\GoogleController@callback')->name('auth.google.callback');
+Route::get('/logout', 'Auth\LogoutController@logout')->name('logout');

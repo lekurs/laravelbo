@@ -5,7 +5,7 @@
     <title>Resolving - @yield('title')</title>
     @yield('styles')
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
-    {{-- /vendors--}}
+    {{-- vendors--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-grid.min.css')}}">
@@ -70,7 +70,7 @@
                             </button>
                             <ul class="drop-menu pull-right">
                                 <li>
-                                    <a href="#">1</a>
+                                    <a href="{{route('logout')}}">logout</a>
                                 </li>
                                 <li>
                                     <a href="#">2</a>
@@ -99,10 +99,12 @@
         <div class="mout-left-panel-informations">
             <div class="mout-left-panel-profil">
                 <div class="mout-profil-left">
+                @if(auth()->user()->roles == "user")
                     <img src="{{ asset('assets/images/uploads/users/clairegindre.png') }}" alt="Claire GINDRE" class="img-fluid img-portrait-bo-left-side">
+                @endif
                 </div>
                 <div class="mout-profil-right">
-                    <h4 class="mout-profil-name">Claire Gindre</h4>
+                    <h4 class="mout-profil-name">{{auth()->user()->username}}</h4>
                     <span>Métier</span>
                 </div>
             </div>

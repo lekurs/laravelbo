@@ -2,7 +2,7 @@
     <h5 class="mout-tab-title">Dashboard</h5>
     <ul class="nav nav-pills nav-stacked nav-quirk">
         <li>
-            <a href="#">
+            <a href="{{route('logout')}}">
                 <i class="fa fa-home"></i>
                 <span>Dashboard</span>
             </a>
@@ -58,8 +58,8 @@
             </a>
             <ul class="nav-children">
                 <li>
-                    <a href="">
-                        Langues 1
+                    <a href="{{route('logout')}}">logout
+
                     </a>
                 </li>
                 <li>

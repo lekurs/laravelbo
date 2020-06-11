@@ -23,6 +23,7 @@ class CreateClientsTable extends Migration
             $table->string('city')->nullable();
             $table->string('siren')->nullable();
             $table->string('slug', 255)->unique();
+            $table->string('logo')->nullable();
 
             $table->timestamps();
         });
