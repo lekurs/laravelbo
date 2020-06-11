@@ -16,7 +16,6 @@ class InvoiceCreation extends FormRequest
     public function rules(): array
     {
         return [
-          'invoice-number' => 'required|max:50',
           'invoice-title' => 'required|max:255',
           'invoice-price' => 'required'
         ];
