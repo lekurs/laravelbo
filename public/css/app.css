@@ -5,6 +5,13 @@ body {
   background: #ffffff;
 }
 
+.mout-btn-add {
+  background-color: #D90000 !important;
+  color: #ffffff !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+}
+
 div.btn-group {
   position: relative;
   display: inline-block;
@@ -397,7 +404,6 @@ div.mout-main-panel {
 
 div.mout-content-panel {
   padding: 20px;
-  position: relative;
   overflow-x: hidden;
   overflow-y: auto;
   height: calc(100vh - 64px);
@@ -1470,6 +1476,22 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
   font-family: "AristaProAlternate";
   font-size: 80px;
   color: white;
+}
+
+table.mout-estimation-table td {
+  border: 0;
+  font-family: "AristaProAlternateLight";
+}
+
+table.mout-estimation-table th {
+  font-family: "AristaProAlternate";
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+table td.estimation-title {
+  font-family: "AristaProAlternate";
+  font-size: 20px;
 }
 
 

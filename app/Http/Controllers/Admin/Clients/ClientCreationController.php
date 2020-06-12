@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Admin\Clients;
 
+use App\Helper\ImageHelper\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Clients\ClientCreation;
 use App\Http\Requests\Contacts\ContactCreation;
@@ -26,7 +27,11 @@ class ClientCreationController extends Controller
         $validator = $clientCreation->all();
         $validatesContact = $contactCreation->all();
 
-        $repository->createWithContact($validator, $validatesContact);
+        ImageHelper::uploadWithPathNamed(request()->file()['client-logo'], strtolower($validator['client-name']));
+
+        $imagePath = strtolower($validator['client-name']) . '/' . request()->file()['client-logo']->getClientOriginalName();
+
+        $repository->createWithContact($validator, $validatesContact, $imagePath);
 
         return redirect()->route('showClients')->with('success', 'Client ajouté');
     }

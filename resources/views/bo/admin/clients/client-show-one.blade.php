@@ -7,6 +7,7 @@
         <div class="mout-client-card-left-content">
             <h3 class="mout-title-client-card">Fiche Client</h3>
             <h4 class="mout-title-client-name">{{$client->name}}</h4>
+{{--            <img src="{{asset('assets/images/uploads/' . $client->logo)}}" alt="{{ $client->name}}">--}}
 
             @forelse($client->contacts as $contact)
             <p class="mout-client-card-info-bolder"><span><i class="far fa-smile contact-icon contact-smiley"></i></span>{{$contact->name}}</p>
@@ -51,6 +52,9 @@
                 </p>
             </div>
         </div>
+    </div>
+    <div class="mout-client-creation-buttons-container">
+        <a href="{{route('createEstimation', $client->slug)}}" class="btn mout-btn-add">+ Devis</a>
     </div>
 
     <div class="mout-estimations-container">
@@ -111,8 +115,6 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
     <script>
         $(document).ready(function () {
             const estimation = $('.mout-client-card-right-informations-container#estimations');

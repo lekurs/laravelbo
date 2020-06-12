@@ -37,7 +37,7 @@ $(document).ready(function ($) {
 
         let navSlide = $(this).find('.nav-children');
 
-        // navSlide.addClass('slide');
+        // navSlide.toggleClass('slide');
 
         navSlide.slideToggle('fast');
     })

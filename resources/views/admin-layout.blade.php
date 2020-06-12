@@ -99,13 +99,13 @@
         <div class="mout-left-panel-informations">
             <div class="mout-left-panel-profil">
                 <div class="mout-profil-left">
-                @if(auth()->user()->roles == "user")
-                    <img src="{{ asset('assets/images/uploads/users/clairegindre.png') }}" alt="Claire GINDRE" class="img-fluid img-portrait-bo-left-side">
+                @if(auth()->user()->roles == "admin")
+                    <img src="{{ asset('assets/images/uploads/users/clairegindre.png') }}" alt="{{auth()->user()->username}} {{auth()->user()->name}}" class="img-fluid img-portrait-bo-left-side">
                 @endif
                 </div>
                 <div class="mout-profil-right">
-                    <h4 class="mout-profil-name">{{auth()->user()->username}}</h4>
-                    <span>Métier</span>
+                    <h4 class="mout-profil-name">{{auth()->user()->username}} <span class="text-uppercase">{{auth()->user()->name}}</span> </h4>
+                    <span>{{auth()->user()->roles}}</span>
                 </div>
             </div>
             <!-- TAB PANEL TOP -->

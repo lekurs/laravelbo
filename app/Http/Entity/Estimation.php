@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Estimation extends Model
 {
     protected $fillable = [
+        'number',
         'title',
         'body',
         'price',

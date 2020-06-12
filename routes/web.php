@@ -80,9 +80,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'devis'], function () {
         Route::get('/', 'Admin\Estimations\EstimationGetAllController@getAll')->name('showAllEstimations');
         Route::get('/client/{idClient}', 'Admin\Estimations\EstimationController@show')->name('showEstimations');
-        Route::get('/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
+        Route::get('/voir/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
         Route::get('/{id}/pdf', 'Admin\Estimations\EstimationPDFController@create')->name('createPDFEstimation');
-        Route::post('/creer', 'Admin\Estimations\EstimationCreationController@createEstimation')->name('createEstimation');
+        Route::get('/creer/{clientSlug}', 'Admin\Estimations\EstimationCreateController@create')->name('createEstimation');
+        Route::post('/creer/test', 'Admin\Estimations\EstimationCreateController@saveContentTools')->name('createEstimationTest');
+        Route::post('/store', 'Admin\Estimations\EstimationCreationController@storeEstimation')->name('storeEstimation');
         Route::post('/{id}/validation', 'Admin\Estimations\EstimationValidateController@updateValidation')->name('valideEstimation');
     });
 

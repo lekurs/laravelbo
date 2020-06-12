@@ -21,7 +21,8 @@ class EstimationRepository
         '09' => 'Septembre',
         '10' => 'Octobre',
         '11' => 'Novembre',
-        '12' => 'Décembre'];
+        '12' => 'Décembre'
+    ];
 
     public function getOne($id): Estimation
     {
@@ -57,6 +58,11 @@ class EstimationRepository
         return Estimation::whereValidation(true)->count();
     }
 
+    public function getLastEstimation(): string
+    {
+        return Estimation::all()->max();
+    }
+
     public function updateValidation(int $id): void
     {
         $estimation = Estimation::find($id);
@@ -66,12 +72,12 @@ class EstimationRepository
         $estimation->save();
     }
 
-    public function save(array $estimationDatas, Contact $contact): void
+    public function save(array $estimationDatas, Contact $contact, $number): void
     {
         $client = $contact->client;
 
         $estimation = new Estimation();
-        $estimation->number = $estimationDatas['estimation-number'];
+        $estimation->number = $number;
         $estimation->title = $estimationDatas['estimation-title'];
         $estimation->body = $estimationDatas['estimation-body'];
         $estimation->price = $estimationDatas['estimation-price'];

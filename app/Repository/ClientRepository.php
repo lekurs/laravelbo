@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class ClientRepository
 {
-    public function createWithContact(array $clientData, array $contactsData)
+    public function createWithContact(array $clientData, array $contactsData, string $imagePath)
     {
         $client = new Client();
         $client->name = $clientData['client-name'];
@@ -21,6 +21,7 @@ class ClientRepository
         $client->city = $clientData['client-city'];
         $client->siren = $clientData['client-siren'];
         $client->slug = Str::slug($clientData['client-name']);
+        $client->logo = $imagePath;
 
         $client->save();
 
@@ -47,6 +48,11 @@ class ClientRepository
     public function getOneBySlug(string $slug): Client
     {
         return Client::whereSlug($slug)->first();
+    }
+
+    public function getOneBySlugWithContacts(string $slug): Client
+    {
+        return Client::whereSlug($slug)->with('contacts')->first();
     }
 
     public function getOneBySlugWithEstimations(string $slug): Client

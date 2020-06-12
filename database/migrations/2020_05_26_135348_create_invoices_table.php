@@ -16,6 +16,7 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('number');
             $table->decimal('amount', 6, 2);
             $table->boolean('paid')->default(false);
             $table->integer('client_id')->unsigned();

@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 
 class EstimationCreationController extends Controller
 {
-    public function createEstimation(
+    public function storeEstimation(
         EstimationCreation $estimationCreation,
         EstimationRepository $repository
     ): RedirectResponse {

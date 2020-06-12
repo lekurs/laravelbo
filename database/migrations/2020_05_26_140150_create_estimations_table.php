@@ -15,6 +15,7 @@ class CreateEstimationsTable extends Migration
     {
         Schema::create('estimations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('number');
             $table->string('title', '255');
             $table->text('body');
             $table->decimal('price', 6, 2);

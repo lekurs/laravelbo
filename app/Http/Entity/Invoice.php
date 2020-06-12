@@ -11,6 +11,7 @@ class Invoice extends Model
 {
     protected $fillable = [
         'title',
+        'number',
         'amount',
         'paid',
         'paiement-date'

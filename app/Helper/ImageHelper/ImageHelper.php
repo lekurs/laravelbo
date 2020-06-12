@@ -11,6 +11,15 @@ class ImageHelper
 {
     private static $w = 400;
 
+    /**
+     * @param UploadedFile $file
+     * @param string $path
+     */
+    public static function uploadWithPathNamed(UploadedFile $file, string $path): void
+    {
+        $file->storeAs('images/uploads/' . $path, $file->getClientOriginalName());
+    }
+
     public static function upload($file, $filename, string $path, UploadedFile $uploadedFile): array
     {
         $fileInfo = pathinfo($filename);
