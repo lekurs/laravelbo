@@ -61,15 +61,4 @@
 
     <script src="{{asset('js/contentTools/imageUploaderHelper.js')}}"></script>
     <script src="{{asset('js/contentTools/saves-content-tools.js')}}"></script>
-
-{{--    <script>--}}
-{{--        $(document).ready(function () {--}}
-{{--            const select = $('select');--}}
-{{--            const blockquote = $('.mout-bo-estimation-contact-content-test > blockquote');--}}
-
-{{--            select.change(function (e) {--}}
-{{--                blockquote.text($(this).val());--}}
-{{--            })--}}
-{{--        })--}}
-{{--    </script>--}}
 @endsection

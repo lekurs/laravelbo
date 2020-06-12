@@ -83,8 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/voir/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
         Route::get('/{id}/pdf', 'Admin\Estimations\EstimationPDFController@create')->name('createPDFEstimation');
         Route::get('/creer/{clientSlug}', 'Admin\Estimations\EstimationCreateController@create')->name('createEstimation');
-        Route::post('/creer/test', 'Admin\Estimations\EstimationCreateController@saveContentTools')->name('createEstimationTest');
-        Route::post('/store', 'Admin\Estimations\EstimationCreationController@storeEstimation')->name('storeEstimation');
+        Route::post('/store', 'Admin\Estimations\EstimationStoreController@store')->name('storeEstimation');
         Route::post('/{id}/validation', 'Admin\Estimations\EstimationValidateController@updateValidation')->name('valideEstimation');
     });
 

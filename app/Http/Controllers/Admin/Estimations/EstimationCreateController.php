@@ -42,9 +42,4 @@ class EstimationCreateController extends Controller
             'client' => $client,
         ]);
     }
-
-    public function saveContentTools()
-    {
-        dd(request()->request);
-    }
 }

@@ -54,6 +54,6 @@ editor.addEventListener('saved', function (ev) {
 
     xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', onStateChange);
-    xhr.open('POST', '/admin/devis/creer/test');
+    xhr.open('POST', '/admin/devis/store');
     xhr.send(payload);
 });

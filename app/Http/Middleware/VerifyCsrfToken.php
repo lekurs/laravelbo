@@ -15,7 +15,7 @@ class VerifyCsrfToken extends Middleware
         'admin/clients/contact/show',
         'admin/menus/save',
         'admin/uploader',
-        'admin/devis/creer/test',
+        'admin/devis/store',
         'admin/uploader/rotate',
         'admin/uploader/save',
     ];
