@@ -15,7 +15,6 @@ class ClientCreationController extends Controller
 {
     public function clientCreation(): View
     {
-
         return view('bo.admin.clients.add-client');
     }
 

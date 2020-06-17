@@ -22,6 +22,11 @@ class InvoiceRepository implements InvoiceRepositoryInterface
         return Invoice::where('client_id', '=', $clientId)->get();
     }
 
+    public function getAllNotPaid(): Collection
+    {
+        return Invoice::wherePaid(false)->get();
+    }
+
     public function totalByMonth(int $clientId): string
     {
         $from = new \DateTime('first day of this month');
@@ -32,7 +37,26 @@ class InvoiceRepository implements InvoiceRepositoryInterface
 
     public function totalByClient($idClient): string
     {
-        return Invoice::where('client_id', '=',  $idClient)
+        return Invoice::whereClientId($idClient)
+            ->sum('amount');
+    }
+
+    public function getTotalByYear()
+    {
+        $date = date('Y');
+
+        $total = DB::table('invoices')
+            ->select(DB::raw('SUM(amount) as total'))
+            ->whereRaw('paid = 1')
+            ->whereRaw('DATE_FORMAT(invoices.created_at, "%Y") = ' . $date . '')
+            ->get();
+
+        return (count($total) == 0) ? 0 : $total[0]->total;
+    }
+
+    public function getSumNotPaid(): string
+    {
+        return Invoice::wherePaid(false)
             ->sum('amount');
     }
 
@@ -51,17 +75,51 @@ class InvoiceRepository implements InvoiceRepositoryInterface
         $date = date('Y');
         return
         DB::table('invoices')
-            ->select(DB::raw('DATE_FORMAT(invoices.created_at, "%m") as month,  sum(invoices.amount) as ca, expertise_id'))
+            ->select(DB::raw('DATE_FORMAT(invoices.created_at, "%m") as month,  sum(invoices.amount) as ca, service_id'))
             ->join('estimations', 'invoices.id', '=', 'invoice_id')
             ->whereRaw('DATE_FORMAT(invoices.created_at, "%Y") = ' . $date . '')
-            ->groupBy(DB::raw('DATE_FORMAT(invoices.created_at, "%m"), expertise_id'))
+            ->groupBy(DB::raw('DATE_FORMAT(invoices.created_at, "%m"), service_id'))
             ->get();
     }
 
-    public function save(array $datas, Estimation $estimation): void
+    public function getMaxInvoices(): ? string
+    {
+        return Invoice::all()->count();
+    }
+
+    public function getSumInvoices()
+    {
+        $total = DB::table('invoices')
+            ->select(DB::raw('SUM(amount) as total'))
+            ->whereRaw('paid = 0')
+            ->get();
+
+        return (count($total) == 0) ? 0 : $total[0]->total;
+    }
+
+    public function validationInvoice(string $id)
+    {
+        $invoice = Invoice::find($id);
+        $invoice->paid = !$invoice->paid;
+        $invoice->save();
+
+        return $this->getSumInvoices();
+    }
+
+    public function update(array $datas, int $id): void
+    {
+        $invoice = Invoice::whereId($id)->first();
+
+        $invoice->title = $datas['invoice-title'];
+        $invoice->amount = $datas['invoice-price'];
+
+        $invoice->save();
+    }
+
+    public function save(array $datas, Estimation $estimation, string $number): void
     {
         $invoice = new Invoice();
-        $invoice->number = $datas['invoice-number'];
+        $invoice->number = $number;
         $invoice->title = $datas['invoice-title'];
         $invoice->amount = $datas['invoice-price'];
         $invoice->client_id = $estimation->client_id;

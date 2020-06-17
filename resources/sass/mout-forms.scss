@@ -1,5 +1,26 @@
 /** MOUT GESTION DES FORMS **/
 
+.mout-form {
+    min-width: 35%;
+    margin: 2em 0 2em;
+}
+
+.mout-form-double-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    & div.left-form-container {
+        padding: 0 20px 20px 0;
+    }
+
+    & H3 {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-family: $bo-font;
+        font-weight: 600;
+    }
+}
+
 /** delete box shadow bootstrap **/
 .form-control:focus {
   box-shadow: none !important;
@@ -21,7 +42,7 @@ legend {
 
 .floating-label {
   position:relative;
-  margin-bottom:20px;
+  margin-bottom:30px;
 }
 
 .floating-input,

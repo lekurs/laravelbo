@@ -2,7 +2,6 @@
     table {
         width: 100%;
         font-family: aristaproalternate;
-        /*border: 1px solid red;*/
     }
 
     h2 {
@@ -59,25 +58,25 @@
     <table style="margin-top: 30mm" class="test">
         <tr>
             <td style="width: 30%; height: 30px; border-bottom: 1px solid yellow; font-size: 18px">
-                DEVIS réf : <span class="mout-estimation-number" style=" ">{{$estimation->number}}</span>
+                DEVIS réf : <span class="mout-estimation-number" style=" ">{{$invoice->number}}</span>
             </td>
-            <td style="width: 70%; text-align: right">Fait à le Chesnay, le {{$estimation->created_at->format('d/m/Y')}}</td>
+            <td style="width: 70%; text-align: right">Fait à le Chesnay, le {{$invoice->created_at->format('d/m/Y')}}</td>
         </tr>
 
         <tr>
-            <td colspan="2" style="font-weight: bold">{{$estimation->client->name}}</td>
+            <td colspan="2" style="font-weight: bold">{{$invoice->estimations->first()->client->name}}</td>
         </tr>
         <tr>
-            <td colspan="2">{{$estimation->contact->name}} {{$estimation->contact->lastname}} </td>
+            <td colspan="2">{{$invoice->estimations->first()->contact->name}} {{$invoice->contact->lastname}} </td>
         </tr>
         <tr>
-            <td colspan="2">{{$estimation->client->address}}</td>
+            <td colspan="2">{{$invoice->estimations->first()->client->address}}</td>
         </tr>
         <tr>
-            <td colspan="2">{{$estimation->client->zip}} {{$estimation->client->city}}</td>
+            <td colspan="2">{{$invoice->estimations->first()->client->zip}} {{$invoice->client->city}}</td>
         </tr>
         <tr>
-            <td colspan="2">{{$estimation->contact->email}}</td>
+            <td colspan="2">{{$invoice->estimations->first()->contact->email}}</td>
         </tr>
     </table>
     <table style="margin-top: 10mm; table-layout: fixed; border-bottom: 1px solid yellow; padding-bottom: 5mm">
@@ -86,7 +85,7 @@
             <td style="width: 15%; border-bottom: 1px solid yellow; text-align: right"><h2>PV HT</h2></td>
         </tr>
         <tr>
-            <td style="width:85%; word-break: break-word; font-size: 14px; padding-top: 5mm">{!! $estimation->body !!}</td>
+            <td style="width:85%; word-break: break-word; font-size: 14px; padding-top: 5mm">{!! $invoice->estimations->first()->body !!}</td>
             <td style="width: 15%">&nbsp;</td>
         </tr>
     </table>
@@ -94,15 +93,15 @@
     <table style="margin-top: 10mm">
         <tr>
             <td style="text-align: right; width: 80%; font-weight: bold; text-transform: uppercase">Total HT : </td>
-            <td style="text-align: right; width: 20%; font-weight: bold; text-transform: uppercase">{{number_format($estimation->price, 2)}} €</td>
+            <td style="text-align: right; width: 20%; font-weight: bold; text-transform: uppercase">{{number_format($invoice->amount, 2)}} €</td>
         </tr>
         <tr>
             <td style="text-align: right; width: 80%; font-weight: bold; text-transform: uppercase">TVA : </td>
-            <td style="text-align: right; width: 20%; font-weight: bold; text-transform: uppercase">{{number_format($estimation->price * .2, 2) }} €</td>
+            <td style="text-align: right; width: 20%; font-weight: bold; text-transform: uppercase">{{number_format($invoice->amount * .2, 2) }} €</td>
         </tr>
         <tr>
             <td style="text-align: right; width: 80%; font-weight: bold; text-transform: uppercase">Total TTC : </td>
-            <td style="text-align: right; width: 20%; font-weight: bold; text-transform: uppercase">{{number_format(($estimation->price * 1.2), 2)}} €</td>
+            <td style="text-align: right; width: 20%; font-weight: bold; text-transform: uppercase">{{number_format(($invoice->amount * 1.2), 2)}} €</td>
         </tr>
         </table>
         <nobreak>
@@ -110,13 +109,6 @@
             <tr>
                 <td style="width: 80%">Conditions de paiement : </td>
                 <td style="width: 20%; text-align: right">Date et signature :</td>
-            </tr>
-
-            <tr>
-                <td colspan="2" style="width: 100%; text-align: right">Devis signé le :  </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="width: 100%; text-align: right">par : </td>
             </tr>
         </table>
     </nobreak>

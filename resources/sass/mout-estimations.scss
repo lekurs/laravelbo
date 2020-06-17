@@ -1,6 +1,17 @@
 //Estimation Page //
+H3.mout-admin-title {
+    text-transform: uppercase;
+    font-family: $bo-font;
+    font-weight: 700;
+    font-size: 28px;
+}
+
 div.mout-admin-estimation-container {
     font-family: $mout-font;
+}
+
+div.mout-admin-container {
+    display: flex;
 }
 
 div.mout-admin-estimation-right-panel {
@@ -19,6 +30,17 @@ div.mout-admin-estimation-right-panel {
     & label {
         margin-bottom: 0;
     }
+}
+
+
+div.mout-admin-left-panel {
+    width: calc(50% - 50px);
+    margin-right: 50px;
+}
+
+div.mout-admin-right-panel {
+    width: calc(50% - 50px);
+    float: right;
 }
 
 div#estimation-action-2 {
@@ -44,7 +66,7 @@ div.mout-estimation-footer-container {
         font-family: $mout-font-extra-light;
         font-size: 30px;
         position: relative;
-        width: 33%;
+        width: 36%;
 
         & span.mout-estimation-number {
             font-family: $mout-font;

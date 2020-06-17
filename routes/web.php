@@ -45,7 +45,7 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 
 //Administration
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/', 'Admin\AdminController@show')->name('admin');
+    Route::get('/', 'Admin\Dashboard\DashboardController@show')->name('admin');
 
     //Menus
     Route::group(['prefix' => 'menus'], function () {
@@ -55,7 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     //Dashboard
     Route::group(['prefix' => 'dashboard'], function () {
-       Route::get('/', 'Admin\Dashboard\DashboardController@show')->name('dashboard');
+       Route::get('/', 'Admin\Dashboard\SalesPerformanceController@show')->name('salesperformances');
     });
 
     //Clients
@@ -83,13 +83,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/voir/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
         Route::get('/{id}/pdf', 'Admin\Estimations\EstimationPDFController@create')->name('createPDFEstimation');
         Route::get('/creer/{clientSlug}', 'Admin\Estimations\EstimationCreateController@create')->name('createEstimation');
+        Route::get('/modifier/{id}', 'Admin\Estimations\EstimationEditController@preSubmit')->name('editEstimation');
         Route::post('/store', 'Admin\Estimations\EstimationStoreController@store')->name('storeEstimation');
         Route::post('/{id}/validation', 'Admin\Estimations\EstimationValidateController@updateValidation')->name('valideEstimation');
+        Route::post('/modifier/{id}/store', 'Admin\Estimations\EstimationEditController@submit')->name('submitEditEstimation');
     });
 
+    //Invoices
     Route::group(['prefix' => 'facture'], function () {
-       Route::get('/{id}', 'Admin\Invoices\InvoiceCreationController@create')->name('createInvoice');
-       Route::post('/{id}/add', 'Admin\Invoices\InvoiceSaveController@save')->name('saveInvoice');
+       Route::get('/{id}', 'Admin\Invoices\InvoiceOneController@show')->name('oneInvoice');
+       Route::get('/creer/{id}', 'Admin\Invoices\InvoiceCreationController@create')->name('createInvoice');
+       Route::get('/creer/{id}/pdf', 'Admin\Invoices\InvoicePDFController@create')->name('createPDFInvoice');
+       Route::get('/modifier/{id}','Admin\Invoices\InvoiceEditController@preSubmit')->name('editInvoie');
+       Route::post('/modifier/{id}/store','Admin\Invoices\InvoiceEditController@submit')->name('submitEditInvoie');
+       Route::post('/{id}/store', 'Admin\Invoices\InvoiceSaveController@save')->name('saveInvoice');
+       Route::post('/{id}/validation', 'Admin\Invoices\InvoiceValidateController@validation')->name('valideInvoice');
 
        //Acompte
         Route::group(['prefix' => 'acompte'], function () {

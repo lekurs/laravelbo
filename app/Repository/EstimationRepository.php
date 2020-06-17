@@ -6,6 +6,7 @@ namespace App\Repository;
 use App\Http\Entity\Contact;
 use App\Http\Entity\Estimation;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class EstimationRepository
 {
@@ -34,6 +35,22 @@ class EstimationRepository
         return Estimation::all();
     }
 
+    public function getAllValidated(): Collection
+    {
+        return Estimation::whereValidation(true)->whereInvoiceId(null)->get();
+    }
+
+    public function getSumValidated()
+    {
+        $total = DB::table('estimations')
+            ->select(DB::raw('SUM(price) as total'))
+            ->whereRaw('validation = 1')
+            ->whereRaw('invoice_id is null')
+            ->get();
+
+        return (count($total) == 0) ? 0 : $total[0]->total;
+    }
+
     public function totalByMonth($clientId): string
     {
         $from = new \DateTime('first day of this month');
@@ -58,9 +75,9 @@ class EstimationRepository
         return Estimation::whereValidation(true)->count();
     }
 
-    public function getLastEstimation(): string
+    public function getLastEstimation(): ? string
     {
-        return Estimation::all()->max();
+        return Estimation::all()->count();
     }
 
     public function updateValidation(int $id): void
@@ -72,17 +89,30 @@ class EstimationRepository
         $estimation->save();
     }
 
-    public function save(array $estimationDatas, Contact $contact, $number): void
+    public function update(array $datas, int $id): void
     {
-        $client = $contact->client;
+        $estimation = Estimation::find($id);
+        $estimation->title = $datas['estimation-title'];
+        $estimation->body = $datas['estimation-body'];
+        $estimation->price = $datas['estimation-amount'];
+        $estimation->validation = $datas['estimation-validation'];
+        $estimation->contact_id = $datas['estimation-contact'];
+        $estimation->service_id = $datas['estimation-service-type'];
 
+        $estimation->save();
+    }
+
+    public function save(array $estimationDatas, $number): void
+    {
         $estimation = new Estimation();
         $estimation->number = $number;
         $estimation->title = $estimationDatas['estimation-title'];
         $estimation->body = $estimationDatas['estimation-body'];
-        $estimation->price = $estimationDatas['estimation-price'];
-        $estimation->client_id = $client->id;
-        $estimation->contact_id = $contact->id;
+        $estimation->price = $estimationDatas['estimation-amount'];
+        $estimation->validation = $estimationDatas['estimation-validation'];
+        $estimation->client_id = $estimationDatas['estimation-client'];
+        $estimation->contact_id = $estimationDatas['estimation-contact'];
+        $estimation->service_id = $estimationDatas['estimation-service-type'];
 
         $estimation->save();
 

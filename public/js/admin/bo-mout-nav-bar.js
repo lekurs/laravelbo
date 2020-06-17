@@ -33,7 +33,7 @@ $(document).ready(function ($) {
 
     //slide left menu
     slideParent.click(function (e) {
-        e.preventDefault();
+        // e.preventDefault();
 
         let navSlide = $(this).find('.nav-children');
 

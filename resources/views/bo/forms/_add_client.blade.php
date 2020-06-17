@@ -1,6 +1,7 @@
-<div class="mout-create-element-form-container">
-    <form action="{{route('addClient')}}" name="addElement" method="post" enctype="multipart/form-data">
-        @csrf
+
+<form action="{{route('addClient')}}" name="addElement" method="post" enctype="multipart/form-data" class="w-100">
+    @csrf
+    <div class="mout-form-double-container">
         <div class="left-form-container">
             <h3>Société</h3>
             <div class="floating-label">
@@ -64,10 +65,12 @@
                 <label for="address" class="float">Email</label>
             </div>
         </div>
+    </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn mout-btn-add">Ajouter</button>
-            <button type="button" class="btn mout-btn-add btn-cancel">Annuler</button>
-        </div>
-    </form>
-</div>
+    <div class="form-group">
+        <button type="submit" class="btn mout-btn-add">
+            <span class="btn-label"><i class="fal fa-plus"></i></span>Ajouter</button>
+        <button type="button" class="btn mout-btn-edit btn-cancel">
+            <span class="btn-label"><i class="fal fa-times"></i></span>Annuler</button>
+    </div>
+</form>

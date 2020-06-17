@@ -3,7 +3,8 @@
 @section('title', 'Dashboard')
 
 @section('body')
-    <div class="mout-admin-dashboard-container">
+    <div class="mout-bo-section-container">
+        <div class="mout-admin-dashboard-container">
         <div class="row">
             <div class="col-md-12 col-xl-2">
                 <div class="mout-admin-dashboard-information-container">
@@ -62,11 +63,13 @@
             </div>
         </div>
     </div>
-    <div class="mout-admin-dashboard-charts-container">
-        <div id="chart_div"></div>
-        <div id="chart_estimation_invoice"></div>
-        <div id="curve_chart"></div>
-
+    </div>
+    <div class="mout-bo-section-container">
+        <div class="mout-admin-dashboard-charts-container">
+            <div id="chart_div"></div>
+            <div id="chart_estimation_invoice"></div>
+            <div id="curve_chart"></div>
+        </div>
     </div>
 @endsection
 

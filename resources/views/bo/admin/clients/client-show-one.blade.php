@@ -3,7 +3,8 @@
 @section('title', 'client {{$client->name}}')
 
 @section('body')
-    <div class="mout-client-card-container">
+    <div class="mout-bo-section-container">
+        <div class="mout-client-card-container">
         <div class="mout-client-card-left-content">
             <h3 class="mout-title-client-card">Fiche Client</h3>
             <h4 class="mout-title-client-name">{{$client->name}}</h4>
@@ -53,11 +54,13 @@
             </div>
         </div>
     </div>
-    <div class="mout-client-creation-buttons-container">
-        <a href="{{route('createEstimation', $client->slug)}}" class="btn mout-btn-add">+ Devis</a>
+        <div class="mout-client-creation-buttons-container">
+            <a href="{{route('createEstimation', $client->slug)}}" class="btn mout-btn-add">+ Devis</a>
+        </div>
     </div>
 
-    <div class="mout-estimations-container">
+    <div class="mout-bo-section-container">
+        <div class="mout-estimations-container">
         <div id="estimation-table-container">
             <table class="table-striped table-hover mout-bo-table" id="estimation-table">
                 <thead>
@@ -101,7 +104,7 @@
                 @foreach($client->invoices as $invoice)
                     <tr>
                         <td>{{$invoice->number}}</td>
-                        <td><a href="{{route('showOneEstimation', $estimation->id)}}" >{{$invoice->title}}</a></td>
+                        <td><a href="{{route('oneInvoice', $invoice->id)}}" >{{$invoice->title}}</a></td>
                         <td>{{$invoice->amount}}</td>
                         <td>{{$invoice->created_at->format('d/m/Y')}}</td>
                         <td><i class="fas fa-circle @if($invoice->validation === 1) green-circle @else red-circle @endif"></i></td>
@@ -112,32 +115,11 @@
             </table>
         </div>
     </div>
+    </div>
 @endsection
 
 @section('js')
-    <script>
-        $(document).ready(function () {
-            const estimation = $('.mout-client-card-right-informations-container#estimations');
-            const invoice = $('.mout-client-card-right-informations-container#invoices');
-            const estimationTable = $('#estimation-table-container');
-            const invoiceTable = $('#invoice-table-container');
-
-            $(estimation).click(function () {
-                if ($(invoiceTable).hasClass('active')) {
-                    $(invoiceTable).removeClass('active');
-                }
-
-                $(estimationTable).toggleClass('active');
-            })
-
-            $(invoice).click(function () {
-                if($(estimationTable).hasClass('active')) {
-                    $(estimationTable).removeClass('active');
-                }
-                $(invoiceTable).toggleClass('active');
-            });
-        });
-    </script>
+    <script src="{{asset('js/admin/bo-show-hide-invoice-estimation.js')}}"></script>
 
     <script>
         $(document).ready( function () {

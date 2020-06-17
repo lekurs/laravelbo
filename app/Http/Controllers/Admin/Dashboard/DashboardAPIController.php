@@ -31,7 +31,7 @@ class DashboardAPIController extends Controller
         array_unshift($datas, ['mois', 'Web', 'Print']);
 
         foreach ($invoiceRepository->getAllWithCA() as $invoice) {
-            $invoicesMonth[$invoice->month][$invoice->client_category_id] = $invoice->ca;
+            $invoicesMonth[$invoice->month][$invoice->service_id] = $invoice->ca;
         }
 
         foreach ($month as $idMonthNum => $libelle) {

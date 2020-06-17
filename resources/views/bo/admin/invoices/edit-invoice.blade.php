@@ -4,11 +4,11 @@
 
 @section('body')
     <div class="mout-bo-section-container">
-        <h2 class="admin-title">Ajout d'un client</h2>
+        <h2 class="admin-title">Mise à jour de la facture : {{$invoice->number}}</h2>
 
         <div class="mout-admin-container">
-            @include('bo.forms._add_client')
+                @include('bo.forms._edit_invoice')
+            </div>
         </div>
-    </div>
-
 @endsection
+

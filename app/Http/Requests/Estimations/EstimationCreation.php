@@ -18,8 +18,9 @@ class EstimationCreation extends FormRequest
         return [
           'estimation-title' => 'required|max:255',
           'estimation-body' => 'required',
-          'estimation-price' => 'required',
-          'estimation-type' => 'required',
+          'estimation-amount' => 'required',
+          'estimation-service-type' => 'required',
+          'estimation-validation' => ''
         ];
     }
 }

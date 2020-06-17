@@ -29,7 +29,7 @@ class Invoice extends Model
 
     public function estimations(): HasMany
     {
-        return $this->hasMany(Estimation::class, 'estimation_id');
+        return $this->hasMany(Estimation::class);
     }
 
     public function scopeNotPaid(Builder $query): Builder
