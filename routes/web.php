@@ -41,6 +41,8 @@ Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 //    return factory(\App\Http\Entity\Invoice::class, 50)->create();
 //});
 
+//Public
+Route::get('/', 'Pub\HomeController@home')->name('index');
 
 
 //Administration
