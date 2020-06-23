@@ -1,7 +1,7 @@
 
 body {
     color: $font-bo-color !important;
-    background-color: #d8dce3 !important;
+    //background-color: #d8dce3 !important;
 }
 
 //Buttons
@@ -464,10 +464,10 @@ div.mout-main-panel {
 
 div.mout-content-panel {
   padding: 20px;
-  //position: relative;
   overflow-x: hidden;
   overflow-y: auto;
   height: calc(100vh - 64px);
+  background-color: #d8dce3 !important;
 
   & h2 {
     width: 80%;

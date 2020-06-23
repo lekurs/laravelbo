@@ -22,4 +22,8 @@
             <div class="mout-pub-panel" id="right-panel"></div>
         </div>
     </header>
+
+    <section class="mout-description-section">
+        
+    </section>
 @endsection
