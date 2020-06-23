@@ -49,6 +49,10 @@ div.mout-bo-panel-container {
             background-color: #D90000;
         }
 
+        &:nth-of-type(3) {
+            background-color: #03DBC2;
+        }
+
         & div.mout-bo-panel-icon {
             display: flex;
             justify-content: center;
@@ -81,7 +85,7 @@ div.mout-bo-panel-container {
                     content: '';
                     position: absolute;
                     height: 1px;
-                    background-color: #c5c5c5;
+                    background-color: #ffffff;
                     width: 100%;
                     top: 5px;
                     left: 0;

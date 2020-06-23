@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/bla', 'FirstController@show')->name('myfirstcontroller');
 
 Route::post('/myform', 'FirstController@form');
@@ -24,24 +20,6 @@ Route::post('/myform', 'FirstController@form');
 Route::get('/posts/show', 'FirstController@showAll')->name('showAllPosts');
 
 Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
-//
-//Route::get('/test/seeders/client', function () {
-//    return factory(\App\Http\Entity\Client::class, 50)->create();
-//});
-//
-//Route::get('/test/seeders/contact', function () {
-//    return factory(\App\Http\Entity\Contact::class, 50)->create();
-//});
-//
-//Route::get('/test/seeders', function () {
-//    return factory(\App\Http\Entity\Estimation::class, 50)->create();
-//});
-//
-//Route::get('/test/seeders/invoices', function () {
-//    return factory(\App\Http\Entity\Invoice::class, 50)->create();
-//});
-
-
 
 //Administration
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
@@ -116,7 +94,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/auth/google', 'Auth\Google\GoogleController@login')->name('auth.google.login');
 Route::get('/auth/google/callback', 'Auth\Google\GoogleController@callback')->name('auth.google.callback');
 Route::get('/logout', 'Auth\LogoutController@logout')->name('logout');
