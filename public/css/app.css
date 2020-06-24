@@ -186,7 +186,6 @@ section.mout-services-description div.services-description-container {
 }
 
 section.mout-services-description div.services-description-container div.services-description-content {
-  position: absolute;
   width: 100%;
   display: none;
 }
