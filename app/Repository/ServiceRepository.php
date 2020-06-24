@@ -11,6 +11,6 @@ class ServiceRepository
 {
     public function getAll(): Collection
     {
-        return Service::all();
+        return Service::orderBy('libelle', 'ASC')->get();
     }
 }

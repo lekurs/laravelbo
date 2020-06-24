@@ -31,11 +31,11 @@ class EstimationGetAllController extends Controller
         $user = Auth::user();
         $roles = $user->roles;
 
-        dd(Auth::guard('admin'));
+//        dd(Auth::guard('admin'));
 
-        if (Auth::guard('admin')->attempt(['password' => $user->getAuthPassword()])) {
-            dd('ok');
-        }
+//        if (Auth::guard('admin')->attempt(['password' => $user->getAuthPassword()])) {
+//            dd('ok');
+//        }
         $estimations = $this->estimationRepository->getAll();
 
         return \view('bo.admin.estimations.estimation-all', [

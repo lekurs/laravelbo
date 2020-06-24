@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('libelle', 100);
             $table->text('description');
+            $table->string('icon');
             $table->timestamps();
         });
     }
