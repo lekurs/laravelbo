@@ -9,7 +9,8 @@ class Service extends Model
 {
     protected $fillable = [
         'libelle',
-        'description'
+        'description',
+        'icon'
     ];
 
     public function Estimations(): HasMany
