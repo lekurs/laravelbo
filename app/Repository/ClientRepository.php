@@ -11,6 +11,11 @@ use Illuminate\Support\Str;
 
 class ClientRepository
 {
+    public function getAll(): Collection
+    {
+        return Client::all();
+    }
+
     public function createWithContact(array $clientData, array $contactsData, string $imagePath)
     {
         $client = new Client();

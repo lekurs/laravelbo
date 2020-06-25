@@ -114,6 +114,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         });
     });
 
+
+    //Projects
+    Route::group(['prefix' => 'realisation'], function () {
+        Route::get('/', 'Admin\Projects\ProjectController@show')->name('projectShow');
+        Route::get('/ajouter', 'Admin\Projects\ProjectCreationController@create')->name('projectCreation');
+        Route::post('/ajouter/store', 'Admin\Projects\ProjectCreationController@store')->name('projectCreationStore');
+    });
+
     Route::group(['prefix' => 'uploader'], function () {
        Route::post('/', 'Admin\Uploader\UploaderImageController@uploadImg')->name('uploaderImg');
        Route::post('/rotate', 'Admin\Uploader\UploaderImageController@rotateImg')->name('rotateImg');

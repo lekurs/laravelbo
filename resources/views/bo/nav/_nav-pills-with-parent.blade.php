@@ -57,6 +57,20 @@
 
         <li class="nav-parent">
             <div class="nav-parent-container">
+                <i class="fal fa-file-invoice-dollar"></i>
+                <span>Réalisations</span>
+            </div>
+            <ul class="nav-children">
+                <li>
+                    <a href="{{route('projectShow')}}">
+                        Voir tous
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-parent">
+            <div class="nav-parent-container">
                 <i class="fas fa-cog"></i>
                 <span>Paramètres</span>
             </div>
