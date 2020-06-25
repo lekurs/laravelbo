@@ -62,8 +62,8 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="#">
-                        Param 1
+                    <a href="{{route('showServices')}}">
+                        Services
                     </a>
                 </li>
                 <li>

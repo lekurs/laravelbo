@@ -52,6 +52,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('/save', 'Admin\Navigation\NavigationSaveController@save')->name('saveNavigation');
     });
 
+    //Services
+    Route::group(['prefix' => 'services'], function () {
+       Route::get('/', 'Admin\Services\ServiceController@show')->name('showServices');
+       Route::get('/creer', 'Admin\Services\ServiceCreationController@creation')->name('createService');
+       Route::post('/save', 'Admin\Services\ServiceStoreController@store')->name('storeService');
+       Route::get('/edit/{id}', 'Admin\Services\ServiceUpdateController@edit')->name('editService');
+       Route::post('/edit/{id}/store', 'Admin\Services\ServiceUpdateController@update')->name('updateService');
+    });
+
     //Dashboard
     Route::group(['prefix' => 'dashboard'], function () {
        Route::get('/', 'Admin\Dashboard\SalesPerformanceController@show')->name('salesperformances');

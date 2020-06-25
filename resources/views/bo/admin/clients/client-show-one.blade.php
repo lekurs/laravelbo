@@ -54,9 +54,9 @@
             </div>
         </div>
     </div>
-        <div class="mout-client-creation-buttons-container">
-            <a href="{{route('createEstimation', $client->slug)}}" class="btn mout-btn-add">+ Devis</a>
-        </div>
+    <div class="mout-client-creation-buttons-container">
+        <a href="{{route('createEstimation', $client->slug)}}" class="btn mout-btn-add">+ Devis</a>
+    </div>
     </div>
 
     <div class="mout-bo-section-container">

@@ -1,7 +1,3 @@
-{{--<div class="mout-create-navigation-container">--}}
-{{--    <button type="button" class="btn mout-add-buttton"><i class="fas fa-plus"></i> </button>--}}
-{{--</div>--}}
-
 <div class="mout-create-navigation-content showNav">
     <div></div>
     <div class="mout-create-element-form-container">
