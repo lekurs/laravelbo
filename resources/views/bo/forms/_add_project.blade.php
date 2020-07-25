@@ -1,4 +1,4 @@
-<form action="{{route('projectCreationStore')}}" method="post" name="addProject" id="addFormProject">
+<form action="{{route('projectCreationStore')}}" method="post" name="addProject" id="addFormProject" enctype="multipart/form-data">
     @include('bo.forms.errors')
     @csrf
     <div class="mout-bo-estimation-client-container">
@@ -26,19 +26,36 @@
 
     <div class="floating-label">
         <div class="mout-bo-estimation-content">
-            <textarea name="project-mission" id="project-mission" cols="30" rows="10" placeholder="Description"></textarea>
+            <textarea name="project-mission" id="project-mission" cols="30" rows="10" placeholder="Description de la mission"></textarea>
         </div>
     </div>
 
     <div class="floating-label">
         <div class="mout-bo-estimation-content">
-            <textarea name="project-result" id="project-result" cols="30" rows="10" placeholder="Description"></textarea>
+            <textarea name="project-result" id="project-result" cols="30" rows="10" placeholder="Description du résultat"></textarea>
         </div>
     </div>
 
     <div class="floating-label">
         <div class="mout-bo-estimation-content">
             <input class="color-picker" id="project-color" name="project-color">
+        </div>
+    </div>
+
+    <div class="floating-label input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+            <input type="file" multiple class="custom-file-input" id="imagePortfolio" name="imagePortfolio" aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Image portfolio</label>
+        </div>
+    </div>
+
+    <div class="images">
+        <div class="pic">
+            <input type="file" name="images[]" class="images-input" accept="image/*" multiple>
+            add
         </div>
     </div>
 

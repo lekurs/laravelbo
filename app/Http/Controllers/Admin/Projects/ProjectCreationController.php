@@ -30,8 +30,11 @@ class ProjectCreationController extends Controller
      * @param ServiceRepository $serviceRepository
      * @param ClientRepository $clientRepository
      */
-    public function __construct(ProjectRepository $projectRepository, ServiceRepository $serviceRepository, ClientRepository $clientRepository)
-    {
+    public function __construct(
+        ProjectRepository $projectRepository,
+        ServiceRepository $serviceRepository,
+        ClientRepository $clientRepository
+    ) {
         $this->projectRepository = $projectRepository;
         $this->serviceRepository = $serviceRepository;
         $this->clientRepository = $clientRepository;
@@ -51,6 +54,6 @@ class ProjectCreationController extends Controller
 
     public function store()
     {
-        dd(request()->request);
+        dd(request()->files);
     }
 }
