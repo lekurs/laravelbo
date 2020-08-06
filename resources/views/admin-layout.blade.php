@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Resolving - @yield('title')</title>
+    <title>Mout - @yield('title')</title>
     @yield('styles')
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
-    {{-- /vendors--}}
+    {{-- vendors--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-grid.min.css')}}">
@@ -19,9 +19,12 @@
     <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Hairline.css')}}">
     <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Light.css')}}">
     <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Fat.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/colorpicker/color-picker.css')}}">
 
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dd86c136c7.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.tiny.cloud/1/jzzmbwdr1zecf3rqasg7irasq2pbv5ys2tsh9l44n4iy2vbm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -69,7 +72,7 @@
                             </button>
                             <ul class="drop-menu pull-right">
                                 <li>
-                                    <a href="#">1</a>
+                                    <a href="{{route('logout')}}">logout</a>
                                 </li>
                                 <li>
                                     <a href="#">2</a>
@@ -98,11 +101,14 @@
         <div class="mout-left-panel-informations">
             <div class="mout-left-panel-profil">
                 <div class="mout-profil-left">
-                    <img src="{{ asset('assets/images/uploads/users/clairegindre.png') }}" alt="Claire GINDRE" class="img-fluid img-portrait-bo-left-side">
+                @if(auth()->user()->roles == "admin")
+                    <img src="{{ asset('assets/images/uploads/users/clairegindre.png') }}" alt="{{auth()->user()->username}} {{auth()->user()->name}}" class="img-fluid img-portrait-bo-left-side">
+                @endif
                 </div>
                 <div class="mout-profil-right">
-                    <h4 class="mout-profil-name">Claire Gindre</h4>
-                    <span>Métier</span>
+                    <h4 class="mout-profil-name">{{auth()->user()->username}} <span class="text-uppercase">{{auth()->user()->name}}</span>
+                        <a href="{{route('logout')}}"><i class="fas fa-user-times" style="color: #ffffff"></i></a></h4>
+                    <span>{{auth()->user()->roles}}</span>
                 </div>
             </div>
             <!-- TAB PANEL TOP -->

@@ -16,10 +16,11 @@ class EstimationCreation extends FormRequest
     public function rules(): array
     {
         return [
-          'estimation-number' => 'required|max:50',
           'estimation-title' => 'required|max:255',
           'estimation-body' => 'required',
-          'estimation-price' => 'required'
+          'estimation-amount' => 'required',
+          'estimation-service-type' => 'required',
+          'estimation-validation' => ''
         ];
     }
 }

@@ -8,11 +8,21 @@
 //@import "~bootstrap/scss/bootstrap-reboot";
 //@import "~bootstrap/scss/bootstrap";
 
+@import "mout-pub";
+
 @import "mout-backoffice";
+@import "dashboard";
 @import "mout-forms";
 @import "mout-global";
 @import "mout-buttons";
+@import "clients";
 @import "mout-estimations";
+@import "mout-services";
+@import "override-datatable";
+@import "mout-projects";
+
+@import "mout-register";
+@import "content-tools-styles";
 
 //Import jquery UI
 //@import "~jquery-ui/themes/base/all";

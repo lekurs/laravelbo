@@ -2,7 +2,8 @@
   var ImageUploader;
 
   ImageUploader = (function() {
-    ImageUploader.imagePath = 'image.png';
+    // ImageUploader.imagePath = 'image.png';
+    ImageUploader.imagePath = '/images/sandbox/image.png';
 
     ImageUploader.imageSize = [600, 174];
 

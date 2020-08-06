@@ -6,6 +6,7 @@
     <div></div>
     <div class="mout-create-element-form-container">
         <form method="post" action="{{route('editContact', $contact->slug)}}" name="editContactForm" id="editContactForm">
+            @include('bo.forms.errors')
             @csrf
             <h3>Contact</h3>
             <div class="form-group">

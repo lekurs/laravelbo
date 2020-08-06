@@ -1,18 +1,4 @@
-import JQuery from 'jquery'
-import Lodash from 'lodash'
-import Popper from 'popper.js'
-import Axios from 'axios'
-import 'bootstrap'
-
-
-import 'jquery-ui/ui/widgets/sortable.js';
-import 'jquery-ui/ui/disable-selection.js';
-
-
-window._ = Lodash
-window.Popper = Popper
-window.$ = window.jQuery = JQuery
-window.axios = Axios
+window._ = require('lodash');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -20,13 +6,12 @@ window.axios = Axios
  * code may be modified to fit the specific needs of your application.
  */
 
-// try {
-//
-//     window.Popper = require('popper.js').default;
-//     window.$ = window.jQuery = require('jquery');
-//
-//     require('bootstrap');
-// } catch (e) {}
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+
+    require('bootstrap');
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -34,7 +19,7 @@ window.axios = Axios
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-// window.axios = require('axios');
+window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

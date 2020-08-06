@@ -3,9 +3,10 @@
 @section('title', 'Ajout d\'un client')
 
 @section('body')
-    <h2 class="admin-title">Mise à jour de : {{$client->name}}</h2>
+    <div class="mout-bo-section-container">
+        <h2 class="admin-title">Mise à jour de : {{$client->name}}</h2>
 
-    <div class="mout-admin-container">
+        <div class="mout-admin-container">
         <div class="mout-admin-double-container">
             <div class="left-container">
                 @include('bo.forms.errors')
@@ -57,6 +58,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 

@@ -1,27 +1,10 @@
-$bo-font: "Assistant";
-$mout-font: "AristaProAlternate";
-$mout-font-bold: "AristaProAlternateFat";
-$mout-font-extra-light: "AristaProAlternateHairline";
-$mout-font-light: "AristaProAlternateLight";
-$bo-font-awesome: "Font Awesome 5 Pro";
-$bo-white-color: #ffffff;
-$bo-black-color: #000000;
-$bo-hover-color: #259dab;
-
-
-$bo-header-bg-color: #262b36;
-$bo-logo-bgcolor: #CBD2D5;
-$bo-border-list: #a0a8b9;
-$bo-link-color: #333333;
-$bo-bg-profil-color: #3b4354;
-$bo-tab-title-color: #9fa8bc;
-$bo-nav-title-color: #505b72;
 
 body {
-    font: $bo-font;
-    background: $bo-white-color;
+    color: $font-bo-color !important;
+    //background-color: #d8dce3 !important;
 }
 
+//Buttons
 div.btn-group {
   position: relative;
   display: inline-block;
@@ -112,6 +95,13 @@ header {
                 border: 0;
                 padding-left: 5px;
                 padding-right: 5px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                  & img {
+                      margin-right: 10px;
+                  }
               }
             }
           }
@@ -221,6 +211,12 @@ div.mout-left-panel {
           font-weight: 500;
           letter-spacing: 1px;
           font-size: 14px;
+          display: flex;
+
+            & a {
+                font-size: 10px;
+                margin: 2px 0 0 5px;
+            }
         }
       }
     }
@@ -319,10 +315,11 @@ div.mout-left-panel {
           display: block;
           width: 100%;
 
-          & > a {
+          & > div.nav-parent-container {
             position: relative;
             display: block;
             color: $bo-nav-title-color;
+            cursor: pointer;
             padding: 12px 14px;
             border-radius: 0;
             font-weight: 700;
@@ -340,10 +337,34 @@ div.mout-left-panel {
               margin-top: 1.5555px;
             }
           }
+
+            & > a {
+                position: relative;
+                display: block;
+                color: $bo-nav-title-color;
+                padding: 12px 14px;
+                border-radius: 0;
+                font-weight: 700;
+                -webkit-transition: all 0.2s ease-out 0s;
+                -o-transition: all 0.2s ease-out 0s;
+                transition: all 0.2s ease-out 0s;
+
+
+                & > i {
+                    width: 16px;
+                    font-size: 14px;
+                    text-align: center;
+                    margin-right: 7px;
+                    color: #259dab;
+                    vertical-align: top;
+                    margin-top: 1.5555px;
+                }
+            }
         }
 
         .nav-parent {
-          & > a:after {
+          & > a:after,
+           > div.nav-parent-container:after {
             content: '\f078';
             font-family: $bo-font-awesome;
             font-size: 16px;
@@ -353,6 +374,7 @@ div.mout-left-panel {
             top: 10px;
             right: 15px;
           }
+
           & ul.nav-children {
             list-style: none;
             display: none;
@@ -361,9 +383,9 @@ div.mout-left-panel {
             position: relative;
             border-top: 1px solid #eaecf0;
             background-color: #f6f7f8;
+
               &.slide {
                   display: block;
-
               }
 
             & > li {
@@ -381,10 +403,20 @@ div.mout-left-panel {
                 padding: 5px 0 5px 18px;
                 color: #657390;
                 position: relative;
+                text-decoration: none;
                 height: 28px;
                 -webkit-transition: all 0.2s ease-out 0s;
                 -o-transition: all 0.2s ease-out 0s;
                 transition: all 0.2s ease-out 0s;
+
+                  &:hover:after {
+                      opacity: 1;
+                      border-color: #657390;
+                      width: 11px;
+                      height: 11px;
+                      left: -6px;
+                      margin-top: -6px;
+                  }
 
                 &:before {
                   content: '';
@@ -432,10 +464,10 @@ div.mout-main-panel {
 
 div.mout-content-panel {
   padding: 20px;
-  position: relative;
   overflow-x: hidden;
   overflow-y: auto;
   height: calc(100vh - 64px);
+  background-color: #d8dce3 !important;
 
   & h2 {
     width: 80%;
@@ -443,6 +475,8 @@ div.mout-content-panel {
     font-family: $bo-font;
     text-transform: uppercase;
     font-weight: 700;
+      font-size: 1.4em;
+      margin-bottom: 1em;
   }
 
   & div.mout-create-navigation-container {
@@ -498,6 +532,14 @@ div.mout-content-panel {
       }
     }
   }
+
+    & div.mout-bo-section-container {
+        margin-bottom: 20px;
+        background-color: $bo-white-color;
+        padding: 20px;
+        border-radius: 4px;
+        //color: #696c74;
+    }
 }
 
 //Gestion des tables
@@ -511,6 +553,7 @@ table.mout-bo-table {
 
   & tbody > tr {
     background-color: transparent !important;
+      line-height: 2em;
   }
 
   & td:nth-of-type(1) {
@@ -701,17 +744,6 @@ i.green-circle {
 
 i.red-circle {
     color: red;
-}
-
-div.mout-admin-left-panel {
-    width: calc(50% - 50px);
-    float: left;
-    margin-right: 50px;
-}
-
-div.mout-admin-right-panel {
-    width: calc(50% - 50px);
-    float: right;
 }
 
 //Pagination //

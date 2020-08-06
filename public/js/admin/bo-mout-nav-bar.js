@@ -33,11 +33,11 @@ $(document).ready(function ($) {
 
     //slide left menu
     slideParent.click(function (e) {
-        e.preventDefault();
+        // e.preventDefault();
 
         let navSlide = $(this).find('.nav-children');
 
-        // navSlide.addClass('slide');
+        // navSlide.toggleClass('slide');
 
         navSlide.slideToggle('fast');
     })

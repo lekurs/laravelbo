@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Client extends Model
 {
     protected $fillable = [
-       'name',
+        'name',
         'phone',
-       'address',
-       'zip',
-       'city',
-       'siren',
-        'slug'
+        'address',
+        'zip',
+        'city',
+        'siren',
+        'slug',
+        'logo'
     ];
 
     public function contacts(): HasMany
@@ -40,5 +41,15 @@ class Client extends Model
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class, 'client_id');
+    }
+
+    public function invoicesNotPaid(): HasMany
+    {
+        return $this->hasMany(Invoice::class, 'client_id')->notPaid();
+    }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class);
     }
 }

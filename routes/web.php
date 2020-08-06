@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/bla', 'FirstController@show')->name('myfirstcontroller');
 
 Route::post('/myform', 'FirstController@form');
@@ -25,27 +21,49 @@ Route::get('/posts/show', 'FirstController@showAll')->name('showAllPosts');
 
 Route::any('/blaedit/{id}', 'FirstController@edit')->name('editcontroller');
 
-Route::get('/test/seeders/client', function () {
-    return factory(\App\Http\Entity\Client::class, 50)->create();
-});
+//
+//Route::get('/test/seeders/client', function () {
+//    return factory(\App\Http\Entity\Client::class, 50)->create();
+//});
+//
+//Route::get('/test/seeders/contact', function () {
+//    return factory(\App\Http\Entity\Contact::class, 50)->create();
+//});
+//
+//Route::get('/test/seeders', function () {
+//    return factory(\App\Http\Entity\Estimation::class, 50)->create();
+//});
+//
+//Route::get('/test/seeders/invoices', function () {
+//    return factory(\App\Http\Entity\Invoice::class, 50)->create();
+//});
 
-Route::get('/test/seeders/contact', function () {
-    return factory(\App\Http\Entity\Contact::class, 50)->create();
-});
-
-Route::get('/test/seeders', function () {
-    return factory(\App\Http\Entity\Estimation::class, 50)->create();
-});
+//Public
+Route::get('/', 'Pub\HomeController@home')->name('index');
 
 
 //Administration
-Route::prefix('admin')->group(function () {
-    Route::get('/', 'Admin\AdminController@show')->name('admin');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', 'Admin\Dashboard\DashboardController@show')->name('admin');
 
     //Menus
     Route::group(['prefix' => 'menus'], function () {
         Route::get('/', 'Admin\Navigation\NavigationCreationController@show')->name('showNavigation');
         Route::post('/save', 'Admin\Navigation\NavigationSaveController@save')->name('saveNavigation');
+    });
+
+    //Services
+    Route::group(['prefix' => 'services'], function () {
+       Route::get('/', 'Admin\Services\ServiceController@show')->name('showServices');
+       Route::get('/creer', 'Admin\Services\ServiceCreationController@creation')->name('createService');
+       Route::post('/save', 'Admin\Services\ServiceStoreController@store')->name('storeService');
+       Route::get('/edit/{id}', 'Admin\Services\ServiceUpdateController@edit')->name('editService');
+       Route::post('/edit/{id}/store', 'Admin\Services\ServiceUpdateController@update')->name('updateService');
+    });
+
+    //Dashboard
+    Route::group(['prefix' => 'dashboard'], function () {
+       Route::get('/', 'Admin\Dashboard\SalesPerformanceController@show')->name('salesperformances');
     });
 
     //Clients
@@ -70,15 +88,24 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'devis'], function () {
         Route::get('/', 'Admin\Estimations\EstimationGetAllController@getAll')->name('showAllEstimations');
         Route::get('/client/{idClient}', 'Admin\Estimations\EstimationController@show')->name('showEstimations');
-        Route::get('/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
+        Route::get('/voir/{id}', 'Admin\Estimations\EstimationOneController@show')->name('showOneEstimation');
         Route::get('/{id}/pdf', 'Admin\Estimations\EstimationPDFController@create')->name('createPDFEstimation');
-        Route::post('/creer', 'Admin\Estimations\EstimationCreationController@createEstimation')->name('createEstimation');
+        Route::get('/creer/{clientSlug}', 'Admin\Estimations\EstimationCreateController@create')->name('createEstimation');
+        Route::get('/modifier/{id}', 'Admin\Estimations\EstimationEditController@preSubmit')->name('editEstimation');
+        Route::post('/store', 'Admin\Estimations\EstimationStoreController@store')->name('storeEstimation');
         Route::post('/{id}/validation', 'Admin\Estimations\EstimationValidateController@updateValidation')->name('valideEstimation');
+        Route::post('/modifier/{id}/store', 'Admin\Estimations\EstimationEditController@submit')->name('submitEditEstimation');
     });
 
+    //Invoices
     Route::group(['prefix' => 'facture'], function () {
-       Route::get('/{id}', 'Admin\Invoices\InvoiceCreationController@create')->name('createInvoice');
-       Route::post('/{id}/add', 'Admin\Invoices\InvoiceSaveController@save')->name('saveInvoice');
+       Route::get('/{id}', 'Admin\Invoices\InvoiceOneController@show')->name('oneInvoice');
+       Route::get('/creer/{id}', 'Admin\Invoices\InvoiceCreationController@create')->name('createInvoice');
+       Route::get('/creer/{id}/pdf', 'Admin\Invoices\InvoicePDFController@create')->name('createPDFInvoice');
+       Route::get('/modifier/{id}','Admin\Invoices\InvoiceEditController@preSubmit')->name('editInvoie');
+       Route::post('/modifier/{id}/store','Admin\Invoices\InvoiceEditController@submit')->name('submitEditInvoie');
+       Route::post('/{id}/store', 'Admin\Invoices\InvoiceSaveController@save')->name('saveInvoice');
+       Route::post('/{id}/validation', 'Admin\Invoices\InvoiceValidateController@validation')->name('valideInvoice');
 
        //Acompte
         Route::group(['prefix' => 'acompte'], function () {
@@ -87,20 +114,24 @@ Route::prefix('admin')->group(function () {
         });
     });
 
+
+    //Projects
+    Route::group(['prefix' => 'realisation'], function () {
+        Route::get('/', 'Admin\Projects\ProjectController@show')->name('projectShow');
+        Route::get('/ajouter', 'Admin\Projects\ProjectCreationController@create')->name('projectCreation');
+        Route::post('/ajouter/store', 'Admin\Projects\ProjectCreationController@store')->name('projectCreationStore');
+    });
+
     Route::group(['prefix' => 'uploader'], function () {
        Route::post('/', 'Admin\Uploader\UploaderImageController@uploadImg')->name('uploaderImg');
+       Route::post('/rotate', 'Admin\Uploader\UploaderImageController@rotateImg')->name('rotateImg');
+       Route::post('/save', 'Admin\Uploader\UploaderImageController@saveImg')->name('saveImg');
     });
 });
 
-//Exemple avec un controller
-//Route::get('/user', 'UserController@index');
 
-//Nommage d'une route
-//Route::get('user/profile', 'UserProfileController@show')->name('profile');
+Auth::routes();
 
-
-//Exemple avec un controller et des classes
-//Route::get('/user', 'UserController@index', function (\App\User $user) {
-//
-//});
-
+Route::get('/auth/google', 'Auth\Google\GoogleController@login')->name('auth.google.login');
+Route::get('/auth/google/callback', 'Auth\Google\GoogleController@callback')->name('auth.google.callback');
+Route::get('/logout', 'Auth\LogoutController@logout')->name('logout');

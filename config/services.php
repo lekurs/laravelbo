@@ -30,4 +30,17 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_API_KEY'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+        'endpoints' => [
+            'baseUrl' => 'https://accounts.google.com/o/oauth2',
+            'authorize' => '/auth?',
+            'token' => 'https://oauth2.googleapis.com/token',
+            'revoke' => '/oauth2/token/revoke',
+            'me' => 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
+        ]
+    ],
+
 ];

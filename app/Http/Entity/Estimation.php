@@ -29,7 +29,12 @@ class Estimation extends Model
 
     public function invoice(): BelongsTo
     {
-        return $this->belongsTo(Invoice::class, 'invoice_id');
+        return $this->belongsTo(Invoice::class);
+    }
+
+    public function Service(): BelongsTo
+    {
+        return $this->belongsTo(Service::class, 'service_id');
     }
 
     public function downPaiementInvoice(): BelongsTo
