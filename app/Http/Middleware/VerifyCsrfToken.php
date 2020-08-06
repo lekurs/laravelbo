@@ -18,5 +18,6 @@ class VerifyCsrfToken extends Middleware
         'admin/devis/store',
         'admin/uploader/rotate',
         'admin/uploader/save',
+        '/edit/{id}'
     ];
 }

@@ -1,11 +1,11 @@
 @extends('admin-layout')
 
-@section('title', 'Nos devis')
+@section('title', 'Nos services')
 
 @section('body')
     <div class="mout-bo-section-container">
-        <h2 class="admin-title">Créer un devis pour {{$client->name}}</h2>
-        @include('bo.forms._add_estimation')
+        <h2 class="admin-title">Créer un service</h2>
+        @include('bo.forms._add_service')
     </div>
 
 

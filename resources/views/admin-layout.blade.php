@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Hairline.css')}}">
     <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Light.css')}}">
     <link rel="stylesheet" href="{{asset('images/mout/AristaProAlternate-Fat.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/colorpicker/color-picker.css')}}">
 
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dd86c136c7.js" crossorigin="anonymous"></script>
