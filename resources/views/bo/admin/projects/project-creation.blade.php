@@ -50,28 +50,4 @@
         });
 
     </script>
-
-    <script>
-            // var button = $('.images .pic')
-            // var uploader = $('<input type="file" accept="image/*" name="images[]"/>')
-            // var images = $('.images')
-            // // var inputs = $('input.images-input');
-            //
-            // button.on('click', function () {
-            //     uploader.click();
-            // })
-            //
-            // uploader.on('change', function () {
-            //     var reader = new FileReader()
-            //     reader.onload = function(event) {
-            //         images.prepend('<div class="img" style="background-image: url(\'' + event.target.result + '\');" rel="'+ event.target.result  +'"><span>remove</span></div>');
-            //     }
-            //     reader.readAsDataURL(uploader[0].files[0])
-            //
-            // })
-            //
-            // images.on('click', '.img', function () {
-            //     $(this).remove()
-            // })
-    </script>
 @endsection
