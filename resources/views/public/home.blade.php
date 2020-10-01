@@ -64,8 +64,18 @@
         </div>
     </section>
 
-    <section class="mout-realisations">
+    <section class="mout-projects">
         <h3>Nos réalisations</h3>
+        <div class="mout-projects-container">
+            @foreach($projects as $project)
+                <div class="mout-project-content">
+                    <img src="{{ asset('assets/images/uploads/projects/' . $project->slug . '/' . $project->imagePortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid project-img">
+                    <a href="#" class="mout-project-description" style="background-color: {{ $project->colorProject }}">
+                        <p>test</p>
+                    </a>
+                </div>
+            @endforeach
+        </div>
     </section>
 @endsection
 

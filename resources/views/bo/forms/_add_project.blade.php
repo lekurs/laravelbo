@@ -19,7 +19,7 @@
 
     <div class="floating-label">
         @foreach($services as $service)
-            <input type="checkbox" name="project-service" id="{{$service->libelle}}" class="custom-radio" value="{{$service->id}}">
+            <input type="checkbox" name="project-service[]" id="{{$service->libelle}}" class="custom-radio" value="{{$service->id}}">
             <label for="{{$service->libelle}}">{{$service->libelle}}</label>
         @endforeach
     </div>
@@ -52,12 +52,7 @@
         </div>
     </div>
 
-    <div class="images">
-        <div class="pic">
-            <input type="file" name="images[]" class="images-input" accept="image/*" multiple>
-            add
-        </div>
-    </div>
+    <div class="images"></div>
 
     <button type="submit" class="btn mout-btn-add">Enregistrer</button>
 </form>

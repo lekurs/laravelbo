@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pub;
 
 
 use App\Http\Controllers\Controller;
+use App\Repository\ProjectRepository;
 use App\Repository\ServiceRepository;
 
 class HomeController extends Controller
@@ -14,13 +15,19 @@ class HomeController extends Controller
      */
     private $servicesRepository;
 
+    private ProjectRepository $projectRepository;
+
     /**
      * HomeController constructor.
      * @param ServiceRepository $servicesRepository
+     * @param ProjectRepository $projectRepository
      */
-    public function __construct(ServiceRepository $servicesRepository)
-    {
+    public function __construct(
+        ServiceRepository $servicesRepository,
+        ProjectRepository $projectRepository
+    ) {
         $this->servicesRepository = $servicesRepository;
+        $this->projectRepository = $projectRepository;
     }
 
 
@@ -28,8 +35,11 @@ class HomeController extends Controller
     {
         $services = $this->servicesRepository->getAll();
 
+        $projects = $this->projectRepository->getAllWithMediasOrderByNewer();
+
         return view('public.home', [
-            'services' => $services
+            'services' => $services,
+            'projects' => $projects
         ]);
     }
 }

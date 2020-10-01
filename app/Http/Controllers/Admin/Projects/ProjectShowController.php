@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Admin\Projects;
 use App\Http\Controllers\Controller;
 use App\Repository\ProjectRepository;
 
-class ProjectController extends Controller
+class ProjectShowController extends Controller
 {
     /**
      * @var ProjectRepository $projectRepository
@@ -24,7 +24,7 @@ class ProjectController extends Controller
     }
 
 
-    public function show()
+    public function __invoke()
     {
         $projects = $this->projectRepository->getAll();
 

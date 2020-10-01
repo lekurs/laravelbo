@@ -4,14 +4,16 @@
 namespace App\Repository;
 
 
+use App\Http\Entity\ImageProject;
 use App\Http\Entity\Project;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class ProjectRepository
 {
     public function getAll(): Collection
     {
-        return Project::all();
+        return Project::with('client', 'imagesProjects')->get();
     }
 
     public function getOneBySlug(string $slug): Project
@@ -19,12 +21,42 @@ class ProjectRepository
         return Project::whereSlug($slug);
     }
 
+    public function getAllWithMediasOrderByNewer()
+    {
+        return Project::with('client', 'imagesProjects')
+                        ->orderBy('completionDate')
+                        ->get();
+    }
+
     public function save(array $datas): void
     {
         $project = new Project();
+        $project->title = $datas['project-title'];
+        $project->mission = $datas['project-mission'];
+        $project->result = $datas['project-result'];
+        $project->imagePortfolioProjectPath = $datas['imagePortfolio']->getClientOriginalName();
+        $project->colorProject = $datas['project-color'];
+        $project->slug = Str::slug($datas['project-title']);
+        $project->client_id = $datas['service-client'];
 
-
-        dd();
         $project->save();
+
+        if (isset($datas['project-service'])) {
+            foreach ($datas['project-service'] as $service) {
+                $project->services()->sync($service, false);
+            }
+        }
+
+        $lastId = $project->id;
+
+        if (isset($datas['image']) && !is_null($datas['image'])) {
+            foreach ($datas['image'] as $key => $file) {
+                $imageProject = new ImageProject();
+                $imageProject->imageProjectPath = $file->getClientOriginalName();
+                $imageProject->project_id = $lastId;
+
+                $imageProject->save();
+            }
+        }
     }
 }

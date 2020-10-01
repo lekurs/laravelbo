@@ -15,6 +15,7 @@
 @section('js')
     <script src="{{asset('vendor/colorpicker/color-picker.js')}}"></script>
     <script src="{{asset('js/admin/autocomplete.js')}}"></script>
+    <script src="{{ asset('js/plugins/add-media.js') }}"></script>
     <script>
         tinymce.init({
             selector: 'textarea',
@@ -29,25 +30,14 @@
             inputClass: 'floating-input',
             resultClass: ''
         });
-    </script>
 
-    <script>
-        $('.images').on('change', '.images-input', function () {
-            let clone = $(this).closest('.pic').clone();
-            clone.find('.images-input').reset;
-
-            let elt = $(this);
-            let show = $("<div>").addClass('show-img');
-            console.log(elt);
-            let reader = new FileReader();
-                reader.onload = function(event) {
-                    let monImage = $('<img>').attr('src', reader.result);
-                    elt.after(monImage);
-                }
-
-                reader.readAsDataURL(this.files[0]);
-                elt.closest('.images').append(clone);
+        $('.images').addMedia({
+            width: '300px',
+            height: '300px',
+            onDelete: function (url) {
+                console.log(url);
+                //Ici on fait l'ajax pour supprimer
+            }
         });
-
     </script>
 @endsection

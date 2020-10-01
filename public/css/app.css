@@ -2072,17 +2072,65 @@ table.dataTable.no-footer {
   border-bottom: 0px !important;
 }
 
+section.mout-projects div.mout-projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+  width: 70%;
+  margin: 0 auto;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content {
+  position: relative;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content img.project-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content a.mout-project-description {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content a.mout-project-description:hover {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 .images {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
+  justify-content: space-between;
 }
 
 .images .img,
-.images .pic {
+.images .add-media-block {
   flex-basis: 31%;
-  margin-bottom: 10px;
   border-radius: 4px;
+  min-height: 220px;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .images .img {
@@ -2130,11 +2178,10 @@ table.dataTable.no-footer {
   color: #fff;
 }
 
-.images .pic {
+.add-media-block {
   background-color: #F5F7FA;
   align-self: center;
   text-align: center;
-  padding: 40px 0;
   text-transform: uppercase;
   color: #848EA1;
   font-size: 12px;
@@ -2142,7 +2189,7 @@ table.dataTable.no-footer {
   position: relative;
 }
 
-.images .pic input[type='file'] {
+.add-media-block input[type='file'] {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2150,6 +2197,38 @@ table.dataTable.no-footer {
   left: 0;
   bottom: 0;
   right: 0;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.add-media-block span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 20px;
+  transition: opacity .3s ease-in-out;
+}
+
+.add-media-block span:hover {
+  opacity: 1;
+}
+
+.add-media-block img.add-media-preview-img {
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .uploader {

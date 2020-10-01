@@ -19,8 +19,8 @@ class ProjectCreation extends FormRequest
           'project-title' => 'required|max: 255',
           'project-mission' => 'required',
           'project-result' => '',
-          'project-image-portfolio' => 'required',
-          'project-color-project' => 'required|max: 7',
+          'project-image-portfolio' => '',
+          'project-color-project' => 'max: 7',
         ];
     }
 }
